@@ -1,0 +1,1 @@
+import{r,l as s,j as e,L as t}from"./index-9w3cDg0k.js";const f=()=>(r.useEffect(()=>{s("Index.useEffect...")},[]),e.jsx("div",{children:e.jsx(t,{to:"/profile",children:"Profile"})}));export{f as default};

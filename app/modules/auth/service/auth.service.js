@@ -37,6 +37,35 @@ let AuthService = class AuthService {
     createRefreshToken(payload) {
         return this.jwtService.sign(payload, { expiresIn: this.configService.get('JWT_REFRESH_TOKEN_EXPIRE') });
     }
+    hasAnyRoles(principal, roles) {
+        if ((0, radash_1.isArray)(roles) && roles.length > 0) {
+            return roles.some((role) => {
+                return principal?.roles?.includes(role);
+            });
+        }
+        else if ((0, radash_1.isString)(roles)) {
+            return principal?.roles?.includes(roles);
+        }
+        return false;
+    }
+    hasAnyAuthorities(principal, authorities) {
+        if ((0, radash_1.isArray)(authorities) && authorities.length > 0) {
+            return authorities.some((role) => {
+                return principal?.authorities?.includes(role);
+            });
+        }
+        else if ((0, radash_1.isString)(authorities)) {
+            return principal?.authorities?.includes(authorities);
+        }
+        return false;
+    }
+    async validate(accessToken) {
+        const payload = this.jwtService.decode(accessToken);
+        return {
+            id: payload.uid,
+            username: payload.username,
+        };
+    }
     async auth(credentials) {
         if ((0, radash_1.isEqual)(credentials.grant_type, 'password')) {
             const user = await this.userService.findByUsername(credentials.username);

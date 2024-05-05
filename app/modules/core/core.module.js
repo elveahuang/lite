@@ -10,6 +10,7 @@ exports.CoreModule = void 0;
 const utils_1 = require("../../commons/utils");
 const authority_admin_controller_1 = require("./controller/admin/authority.admin.controller");
 const role_admin_controller_1 = require("./controller/admin/role.admin.controller");
+const user_session_admin_controller_1 = require("./controller/admin/user-session.admin.controller");
 const user_admin_controller_1 = require("./controller/admin/user.admin.controller");
 const authority_app_controller_1 = require("./controller/app/authority.app.controller");
 const role_app_controller_1 = require("./controller/app/role.app.controller");
@@ -38,7 +39,15 @@ exports.CoreModule = CoreModule;
 exports.CoreModule = CoreModule = __decorate([
     (0, common_1.Module)({
         imports: [typeorm_1.TypeOrmModule.forFeature([user_entity_1.UserEntity, user_session_entity_1.UserSessionEntity, role_entity_1.RoleEntity, authority_entity_1.AuthorityEntity, user_role_entity_1.UserRoleEntity, role_authority_entity_1.RoleAuthorityEntity])],
-        controllers: [role_app_controller_1.RoleAppController, user_app_controller_1.UserAppController, authority_app_controller_1.AuthorityAppController, authority_admin_controller_1.AuthorityAdminController, role_admin_controller_1.RoleAdminController, user_admin_controller_1.UserAdminController],
+        controllers: [
+            role_app_controller_1.RoleAppController,
+            user_app_controller_1.UserAppController,
+            authority_app_controller_1.AuthorityAppController,
+            authority_admin_controller_1.AuthorityAdminController,
+            role_admin_controller_1.RoleAdminController,
+            user_admin_controller_1.UserAdminController,
+            user_session_admin_controller_1.UserSessionAdminController,
+        ],
         providers: [
             (0, utils_1.createCustomRepository)(user_entity_1.UserEntity, user_repository_1.CustomUserRepository),
             (0, utils_1.createCustomRepository)(user_session_entity_1.UserSessionEntity, user_session_repository_1.CustomUserSessionRepository),

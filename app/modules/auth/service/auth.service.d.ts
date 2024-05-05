@@ -1,3 +1,4 @@
+import { Principal } from '@/commons/security/principal';
 import { R } from '@/commons/web/response';
 import { CredentialsDto } from '@/modules/auth/dto/credentials.dto';
 import { JwtPayload, JwtResponse } from '@/modules/auth/passport/jwt.type';
@@ -13,5 +14,8 @@ export declare class AuthService {
     constructor(jwtService: JwtService, configService: ConfigService, userSessionService: UserSessionService, userService: UserService);
     createAccessToken(payload: JwtPayload): string;
     createRefreshToken(payload: JwtPayload): string;
+    hasAnyRoles(principal: Principal, roles: string[] | string): boolean;
+    hasAnyAuthorities(principal: Principal, authorities: string[] | string): boolean;
+    validate(accessToken: string): Promise<Principal>;
     auth(credentials: CredentialsDto): Promise<R<JwtResponse>>;
 }

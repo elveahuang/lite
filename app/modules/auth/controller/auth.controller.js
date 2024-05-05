@@ -16,7 +16,6 @@ exports.AuthController = void 0;
 const anonymous_decorator_1 = require("../../../commons/decorator/anonymous.decorator");
 const sequence_service_1 = require("../../../commons/service/sequence.service");
 const credentials_dto_1 = require("../dto/credentials.dto");
-const jwt_guard_1 = require("../passport/jwt.guard");
 const local_guard_1 = require("../passport/local.guard");
 const auth_service_1 = require("../service/auth.service");
 const common_1 = require("@nestjs/common");
@@ -37,8 +36,7 @@ let AuthController = class AuthController {
         return this.authService.auth(credentialsDto);
     }
     async me(reg) {
-        console.log(reg);
-        return reg.user;
+        return reg.principal;
     }
 };
 exports.AuthController = AuthController;
@@ -60,8 +58,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], AuthController.prototype, "token", null);
 __decorate([
-    (0, common_1.UseGuards)(jwt_guard_1.JwtAuthGuard),
-    (0, common_1.Post)('/me'),
+    (0, common_1.Get)('/api/user'),
     __param(0, (0, common_1.Req)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),

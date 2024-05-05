@@ -21,6 +21,9 @@ let UserSessionService = class UserSessionService {
     constructor(userSessionRepository) {
         this.userSessionRepository = userSessionRepository;
     }
+    async findAll() {
+        return this.userSessionRepository.find();
+    }
     async createUserSession(payload) {
         const session = new user_session_entity_1.UserSessionEntity();
         session.userId = payload.uid;

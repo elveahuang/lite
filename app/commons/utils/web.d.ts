@@ -1,4 +1,4 @@
-import { R } from '@/commons/web/response';
+import { R } from '../web/response';
 export declare class Web {
     static STATUS_SUCCESS: number;
     static STATUS_ERROR: number;

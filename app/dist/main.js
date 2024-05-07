@@ -17,7 +17,7 @@ async function bootstrap() {
     app.useGlobalFilters(new http_exception_filter_1.HttpExceptionFilter());
     app.useStaticAssets({
         root: (0, path_1.join)(__dirname, '..', 'public'),
-        prefix: '/public/',
+        prefix: '/',
     });
     app.setViewEngine({
         engine: { handlebars: require('handlebars') },

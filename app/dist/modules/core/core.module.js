@@ -9,6 +9,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.CoreModule = void 0;
 const utils_1 = require("../../commons/utils");
 const authority_admin_controller_1 = require("./controller/admin/authority.admin.controller");
+const dashboard_admin_controller_1 = require("./controller/admin/dashboard.admin.controller");
 const role_admin_controller_1 = require("./controller/admin/role.admin.controller");
 const user_session_admin_controller_1 = require("./controller/admin/user-session.admin.controller");
 const user_admin_controller_1 = require("./controller/admin/user.admin.controller");
@@ -39,15 +40,6 @@ exports.CoreModule = CoreModule;
 exports.CoreModule = CoreModule = __decorate([
     (0, common_1.Module)({
         imports: [typeorm_1.TypeOrmModule.forFeature([user_entity_1.UserEntity, user_session_entity_1.UserSessionEntity, role_entity_1.RoleEntity, authority_entity_1.AuthorityEntity, user_role_entity_1.UserRoleEntity, role_authority_entity_1.RoleAuthorityEntity])],
-        controllers: [
-            role_app_controller_1.RoleAppController,
-            user_app_controller_1.UserAppController,
-            authority_app_controller_1.AuthorityAppController,
-            authority_admin_controller_1.AuthorityAdminController,
-            role_admin_controller_1.RoleAdminController,
-            user_admin_controller_1.UserAdminController,
-            user_session_admin_controller_1.UserSessionAdminController,
-        ],
         providers: [
             (0, utils_1.createCustomRepository)(user_entity_1.UserEntity, user_repository_1.CustomUserRepository),
             (0, utils_1.createCustomRepository)(user_session_entity_1.UserSessionEntity, user_session_repository_1.CustomUserSessionRepository),
@@ -61,6 +53,16 @@ exports.CoreModule = CoreModule = __decorate([
             authority_service_1.AuthorityService,
         ],
         exports: [typeorm_1.TypeOrmModule, user_service_1.UserService, user_session_service_1.UserSessionService, role_service_1.RoleService, authority_service_1.AuthorityService],
+        controllers: [
+            role_app_controller_1.RoleAppController,
+            user_app_controller_1.UserAppController,
+            authority_app_controller_1.AuthorityAppController,
+            authority_admin_controller_1.AuthorityAdminController,
+            dashboard_admin_controller_1.DashboardAdminController,
+            role_admin_controller_1.RoleAdminController,
+            user_admin_controller_1.UserAdminController,
+            user_session_admin_controller_1.UserSessionAdminController,
+        ],
     })
 ], CoreModule);
 //# sourceMappingURL=core.module.js.map

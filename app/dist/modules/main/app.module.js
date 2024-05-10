@@ -14,6 +14,7 @@ const commons_module_1 = require("../../commons/commons.module");
 const env_1 = require("../../config/env");
 const auth_module_1 = require("../auth/auth.module");
 const core_module_1 = require("../core/core.module");
+const api_controller_1 = require("./api.controller");
 const app_controller_1 = require("./app.controller");
 const app_service_1 = require("./app.service");
 const common_1 = require("@nestjs/common");
@@ -54,7 +55,7 @@ exports.AppModule = AppModule = __decorate([
             core_module_1.CoreModule,
             auth_module_1.AuthModule,
         ],
-        controllers: [app_controller_1.AppController],
+        controllers: [app_controller_1.AppController, api_controller_1.ApiController],
         providers: [app_service_1.AppService, jwt_1.JwtService],
     }),
     __metadata("design:paramtypes", [])

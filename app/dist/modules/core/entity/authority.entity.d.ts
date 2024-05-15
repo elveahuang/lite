@@ -1,3 +1,5 @@
-import { IdEntity } from '@/commons/entity/id.entity';
-export declare class AuthorityEntity extends IdEntity {
+import { BaseEntity } from '@/commons/entity/base.entity';
+export declare class AuthorityEntity extends BaseEntity {
+    code: string;
+    title: string;
 }

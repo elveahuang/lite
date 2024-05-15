@@ -15,6 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.AuthController = void 0;
 const anonymous_decorator_1 = require("../../../commons/decorator/anonymous.decorator");
 const sequence_service_1 = require("../../../commons/service/sequence.service");
+const web_1 = require("../../../commons/utils/web");
 const credentials_dto_1 = require("../dto/credentials.dto");
 const local_guard_1 = require("../passport/local.guard");
 const auth_service_1 = require("../service/auth.service");
@@ -35,8 +36,8 @@ let AuthController = class AuthController {
     async token(credentialsDto) {
         return this.authService.auth(credentialsDto);
     }
-    async me(reg) {
-        return reg.principal;
+    async me(req) {
+        return web_1.Web.success(req.principal);
     }
 };
 exports.AuthController = AuthController;

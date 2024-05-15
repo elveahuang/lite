@@ -14,6 +14,8 @@ const service_exception_1 = require("../../../commons/exception/service.exceptio
 const utils_1 = require("../../../commons/utils");
 const encrypt_1 = require("../../../commons/utils/encrypt");
 const web_1 = require("../../../commons/utils/web");
+const authority_service_1 = require("../../core/service/authority.service");
+const role_service_1 = require("../../core/service/role.service");
 const user_session_service_1 = require("../../core/service/user-session.service");
 const user_service_1 = require("../../core/service/user.service");
 const common_1 = require("@nestjs/common");
@@ -25,11 +27,15 @@ let AuthService = class AuthService {
     configService;
     userSessionService;
     userService;
-    constructor(jwtService, configService, userSessionService, userService) {
+    roleService;
+    authorityService;
+    constructor(jwtService, configService, userSessionService, userService, roleService, authorityService) {
         this.jwtService = jwtService;
         this.configService = configService;
         this.userSessionService = userSessionService;
         this.userService = userService;
+        this.roleService = roleService;
+        this.authorityService = authorityService;
     }
     createAccessToken(payload) {
         return this.jwtService.sign(payload);
@@ -61,9 +67,17 @@ let AuthService = class AuthService {
     }
     async validate(accessToken) {
         const payload = this.jwtService.decode(accessToken);
+        const uid = payload.uid;
+        const sid = payload.sid;
+        const roles = await this.roleService.findByUserId(uid);
+        const authorities = await this.authorityService.findByUserId(uid);
         return {
-            id: payload.uid,
+            uid: uid,
+            sid: sid,
             username: payload.username,
+            nickname: payload.username,
+            authorities: authorities.map((a) => a.code),
+            roles: roles.map((r) => r.code),
         };
     }
     async auth(credentials) {
@@ -77,6 +91,8 @@ let AuthService = class AuthService {
                     uid: user.id,
                     username: user.username,
                 };
+                const roles = await this.roleService.findByUserId(user.id);
+                console.log(roles.length);
                 const accessToken = this.createAccessToken(payload);
                 const refreshToken = this.createRefreshToken(payload);
                 this.userSessionService.createUserSession(payload).then();
@@ -98,6 +114,7 @@ let AuthService = class AuthService {
                     uid: payload.uid,
                     username: payload.username,
                 });
+                this.userSessionService.updateUserSession(payload).then();
                 return web_1.Web.success({
                     access_token: accessToken,
                     refresh_token: credentials.refresh_token,
@@ -116,6 +133,8 @@ exports.AuthService = AuthService = __decorate([
     __metadata("design:paramtypes", [jwt_1.JwtService,
         config_1.ConfigService,
         user_session_service_1.UserSessionService,
-        user_service_1.UserService])
+        user_service_1.UserService,
+        role_service_1.RoleService,
+        authority_service_1.AuthorityService])
 ], AuthService);
 //# sourceMappingURL=auth.service.js.map

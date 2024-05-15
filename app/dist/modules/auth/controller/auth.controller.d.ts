@@ -9,5 +9,5 @@ export declare class AuthController {
     constructor(configService: ConfigService, sequenceService: SequenceService, authService: AuthService);
     login(reg: any): Promise<any>;
     token(credentialsDto: CredentialsDto): Promise<any>;
-    me(reg: any): Promise<any>;
+    me(req: any): Promise<any>;
 }

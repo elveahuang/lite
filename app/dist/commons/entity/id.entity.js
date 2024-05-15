@@ -13,45 +13,10 @@ exports.IdEntity = void 0;
 const typeorm_1 = require("typeorm");
 class IdEntity {
     id;
-    createdAt;
-    lastModifiedAt;
-    onBeforeInsert() {
-        this.createdAt = new Date();
-        this.lastModifiedAt = new Date();
-    }
-    onBeforeUpdate() {
-        this.lastModifiedAt = new Date();
-    }
 }
 exports.IdEntity = IdEntity;
 __decorate([
     (0, typeorm_1.PrimaryGeneratedColumn)({ type: 'bigint', name: 'id', comment: 'ID', unsigned: true }),
     __metadata("design:type", BigInt)
 ], IdEntity.prototype, "id", void 0);
-__decorate([
-    (0, typeorm_1.CreateDateColumn)({
-        name: 'created_at',
-        comment: '创建时间',
-    }),
-    __metadata("design:type", Date)
-], IdEntity.prototype, "createdAt", void 0);
-__decorate([
-    (0, typeorm_1.UpdateDateColumn)({
-        name: 'last_modified_at',
-        comment: '最后修改时间',
-    }),
-    __metadata("design:type", Date)
-], IdEntity.prototype, "lastModifiedAt", void 0);
-__decorate([
-    (0, typeorm_1.BeforeInsert)(),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
-    __metadata("design:returntype", void 0)
-], IdEntity.prototype, "onBeforeInsert", null);
-__decorate([
-    (0, typeorm_1.BeforeUpdate)(),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
-    __metadata("design:returntype", void 0)
-], IdEntity.prototype, "onBeforeUpdate", null);
 //# sourceMappingURL=id.entity.js.map

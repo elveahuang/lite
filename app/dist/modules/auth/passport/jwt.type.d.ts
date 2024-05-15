@@ -1,6 +1,6 @@
 export declare type JwtPayload = {
     sub: string;
-    uid: string | number | bigint;
+    uid: bigint;
     sid: string;
     username: string;
 };

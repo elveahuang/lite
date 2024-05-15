@@ -5,5 +5,6 @@ export declare class UserSessionService {
     private readonly userSessionRepository;
     constructor(userSessionRepository: UserSessionRepository);
     findAll(): Promise<UserSessionEntity[]>;
-    createUserSession(payload: JwtPayload): Promise<void>;
+    createUserSession(payload: JwtPayload): Promise<UserSessionEntity>;
+    updateUserSession(payload: JwtPayload): Promise<UserSessionEntity>;
 }

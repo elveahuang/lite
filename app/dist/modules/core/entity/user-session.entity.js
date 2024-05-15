@@ -18,11 +18,12 @@ let UserSessionEntity = class UserSessionEntity extends id_entity_1.IdEntity {
     username;
     host;
     ua;
+    lastAccessDatetime;
 };
 exports.UserSessionEntity = UserSessionEntity;
 __decorate([
-    (0, typeorm_1.Column)({ name: 'user_id' }),
-    __metadata("design:type", Number)
+    (0, typeorm_1.Column)({ type: 'bigint', name: 'user_id' }),
+    __metadata("design:type", BigInt)
 ], UserSessionEntity.prototype, "userId", void 0);
 __decorate([
     (0, typeorm_1.Column)({ name: 'session_id' }),
@@ -40,6 +41,10 @@ __decorate([
     (0, typeorm_1.Column)({ name: 'ua' }),
     __metadata("design:type", String)
 ], UserSessionEntity.prototype, "ua", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ name: 'last_access_datetime' }),
+    __metadata("design:type", Date)
+], UserSessionEntity.prototype, "lastAccessDatetime", void 0);
 exports.UserSessionEntity = UserSessionEntity = __decorate([
     (0, typeorm_1.Entity)('sys_user_session')
 ], UserSessionEntity);

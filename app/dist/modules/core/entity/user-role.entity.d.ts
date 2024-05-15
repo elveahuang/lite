@@ -1,3 +1,5 @@
-import { IdEntity } from '@/commons/entity/id.entity';
-export declare class UserRoleEntity extends IdEntity {
+import { SimpleEntity } from '@/commons/entity/simple.entity';
+export declare class UserRoleEntity extends SimpleEntity {
+    userId: bigint;
+    roleId: bigint;
 }

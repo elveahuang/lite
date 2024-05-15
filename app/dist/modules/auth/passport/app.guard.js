@@ -22,7 +22,7 @@ let AppAuthGuard = class AppAuthGuard {
         this.reflector = reflector;
         this.authService = authService;
     }
-    canActivate(context) {
+    async canActivate(context) {
         console.log('AppAuthGuard.canActivate()...');
         const anonymous = this.reflector.get('anonymous', context.getHandler());
         const request = context.switchToHttp().getRequest();
@@ -31,9 +31,10 @@ let AppAuthGuard = class AppAuthGuard {
             if (request.headers.authorization && request.headers.authorization.split(' ')[0] === 'Bearer') {
                 const token = request.headers.authorization.split(' ')[1];
                 try {
-                    request.principal = this.authService.validate(token);
+                    request.principal = await this.authService.validate(token);
                 }
                 catch (e) {
+                    console.log(e);
                     if (!anonymous) {
                         throw new service_exception_1.ServiceException();
                     }

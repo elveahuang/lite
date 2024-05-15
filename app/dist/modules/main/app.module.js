@@ -46,7 +46,7 @@ exports.AppModule = AppModule = __decorate([
                         username: configService.get('DB_USER'),
                         password: configService.get('DB_PASSWORD'),
                         entities: [__dirname + './../**/**.entity{.ts,.js}'],
-                        logging: false,
+                        logging: true,
                         synchronize: false,
                     };
                 },

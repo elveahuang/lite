@@ -28,6 +28,11 @@ let EntitySubscriber = class EntitySubscriber {
             console.log(`EntitySubscriber.beforeInsert. generate id - ${event.entity.id}.`);
         }
     }
+    beforeUpdate(event) {
+        if (event.entity instanceof id_entity_1.IdEntity) {
+            console.log(`EntitySubscriber.beforeUpdate. generate id - ${event.entity.id}.`);
+        }
+    }
 };
 exports.EntitySubscriber = EntitySubscriber;
 exports.EntitySubscriber = EntitySubscriber = __decorate([

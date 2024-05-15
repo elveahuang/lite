@@ -5,5 +5,5 @@ export declare class AppAuthGuard implements CanActivate {
     private readonly reflector;
     private readonly authService;
     constructor(reflector: Reflector, authService: AuthService);
-    canActivate(context: ExecutionContext): boolean;
+    canActivate(context: ExecutionContext): Promise<boolean>;
 }

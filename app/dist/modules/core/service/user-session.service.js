@@ -29,7 +29,12 @@ let UserSessionService = class UserSessionService {
         session.userId = payload.uid;
         session.sessionId = payload.sid;
         session.username = payload.username;
-        await this.userSessionRepository.save(session);
+        return await this.userSessionRepository.save(session);
+    }
+    async updateUserSession(payload) {
+        const session = await this.userSessionRepository.findBySessionId(payload.sid);
+        session.lastAccessDatetime = new Date();
+        return await this.userSessionRepository.save(session);
     }
 };
 exports.UserSessionService = UserSessionService;

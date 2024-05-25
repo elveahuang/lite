@@ -14,8 +14,10 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AuthController = void 0;
 const anonymous_decorator_1 = require("../../../commons/decorator/anonymous.decorator");
+const context_decorator_1 = require("../../../commons/decorator/context.decorator");
 const sequence_service_1 = require("../../../commons/service/sequence.service");
 const web_1 = require("../../../commons/utils/web");
+const request_context_1 = require("../../../commons/web/request-context");
 const credentials_dto_1 = require("../dto/credentials.dto");
 const local_guard_1 = require("../passport/local.guard");
 const auth_service_1 = require("../service/auth.service");
@@ -33,8 +35,8 @@ let AuthController = class AuthController {
     async login(reg) {
         return reg.user;
     }
-    async token(credentialsDto) {
-        return this.authService.auth(credentialsDto);
+    async token(credentials, context) {
+        return this.authService.auth(credentials, context);
     }
     async me(req) {
         return web_1.Web.success(req.principal);
@@ -54,8 +56,9 @@ __decorate([
     (0, anonymous_decorator_1.Anonymous)(),
     (0, common_1.Post)('/auth/token'),
     __param(0, (0, common_1.Body)()),
+    __param(1, (0, context_decorator_1.Context)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [credentials_dto_1.CredentialsDto]),
+    __metadata("design:paramtypes", [credentials_dto_1.CredentialsDto, request_context_1.RequestContext]),
     __metadata("design:returntype", Promise)
 ], AuthController.prototype, "token", null);
 __decorate([

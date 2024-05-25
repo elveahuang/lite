@@ -1,4 +1,5 @@
 import { Principal } from '@/commons/security/principal';
+import { RequestContext } from '@/commons/web/request-context';
 import { R } from '@/commons/web/response';
 import { CredentialsDto } from '@/modules/auth/dto/credentials.dto';
 import { JwtPayload, JwtResponse } from '@/modules/auth/passport/jwt.type';
@@ -21,5 +22,5 @@ export declare class AuthService {
     hasAnyRoles(principal: Principal, roles: string[] | string): boolean;
     hasAnyAuthorities(principal: Principal, authorities: string[] | string): boolean;
     validate(accessToken: string): Promise<Principal>;
-    auth(credentials: CredentialsDto): Promise<R<JwtResponse>>;
+    auth(credentials: CredentialsDto, context?: RequestContext): Promise<R<JwtResponse>>;
 }

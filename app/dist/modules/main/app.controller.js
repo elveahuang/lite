@@ -8,10 +8,15 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AppController = void 0;
+const context_decorator_1 = require("../../commons/decorator/context.decorator");
 const sequence_service_1 = require("../../commons/service/sequence.service");
 const base_controller_1 = require("../../commons/web/base.controller");
+const request_context_1 = require("../../commons/web/request-context");
 const app_service_1 = require("./app.service");
 const common_1 = require("@nestjs/common");
 const config_1 = require("@nestjs/config");
@@ -25,7 +30,7 @@ let AppController = class AppController extends base_controller_1.BaseController
         this.sequenceService = sequenceService;
         this.appService = appService;
     }
-    index() {
+    index(context) {
         console.log(this.configService.get('JWT_SECRET'));
         console.log(this.sequenceService.nextId().toString());
         return { message: 'Hello world!' };
@@ -35,8 +40,9 @@ exports.AppController = AppController;
 __decorate([
     (0, common_1.Get)(),
     (0, common_1.Render)('index.hbs'),
+    __param(0, (0, context_decorator_1.Context)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
+    __metadata("design:paramtypes", [request_context_1.RequestContext]),
     __metadata("design:returntype", Object)
 ], AppController.prototype, "index", null);
 exports.AppController = AppController = __decorate([

@@ -80,7 +80,7 @@ let AuthService = class AuthService {
             roles: roles.map((r) => r.code),
         };
     }
-    async auth(credentials) {
+    async auth(credentials, context = {}) {
         if ((0, radash_1.isEqual)(credentials.grant_type, 'password')) {
             const user = await this.userService.findByUsername(credentials.username);
             if (user && (await (0, encrypt_1.compare)(credentials.password, user.password))) {
@@ -95,7 +95,7 @@ let AuthService = class AuthService {
                 console.log(roles.length);
                 const accessToken = this.createAccessToken(payload);
                 const refreshToken = this.createRefreshToken(payload);
-                this.userSessionService.createUserSession(payload).then();
+                this.userSessionService.createUserSession(payload, context).then();
                 return web_1.Web.success({
                     access_token: accessToken,
                     refresh_token: refreshToken,

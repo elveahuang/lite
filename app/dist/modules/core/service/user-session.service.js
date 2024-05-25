@@ -24,16 +24,48 @@ let UserSessionService = class UserSessionService {
     async findAll() {
         return this.userSessionRepository.find();
     }
-    async createUserSession(payload) {
+    async createUserSession(payload, context = {}) {
+        const now = new Date();
         const session = new user_session_entity_1.UserSessionEntity();
         session.userId = payload.uid;
         session.sessionId = payload.sid;
         session.username = payload.username;
+        session.ip = context?.ip || '';
+        session.ua = context?.ua || '';
+        session.clientId = context?.clientVersion || '';
+        session.clientVersion = context?.clientVersion || '';
+        session.startDatetime = now;
+        session.startYear = now.getFullYear();
+        session.startMonth = now.getMonth();
+        session.startDay = now.getDate();
+        session.startHour = now.getHours();
+        session.startMinute = now.getMinutes();
         return await this.userSessionRepository.save(session);
     }
-    async updateUserSession(payload) {
+    async updateUserSession(payload, context = {}) {
+        const now = new Date();
         const session = await this.userSessionRepository.findBySessionId(payload.sid);
-        session.lastAccessDatetime = new Date();
+        session.ip = context?.ip || '';
+        session.ua = context?.ua || '';
+        session.clientId = context?.clientVersion || '';
+        session.clientVersion = context?.clientVersion || '';
+        session.lastAccessDatetime = now;
+        session.lastAccessYear = now.getFullYear();
+        session.lastAccessMonth = now.getMonth();
+        session.lastAccessDay = now.getDate();
+        session.lastAccessHour = now.getHours();
+        session.lastAccessMinute = now.getMinutes();
+        return await this.userSessionRepository.save(session);
+    }
+    async endUserSession(payload, context = {}) {
+        const now = new Date();
+        const session = await this.userSessionRepository.findBySessionId(payload.sid);
+        session.endDatetime = now;
+        session.endYear = now.getFullYear();
+        session.endMonth = now.getMonth();
+        session.endDay = now.getDate();
+        session.endHour = now.getHours();
+        session.endMinute = now.getMinutes();
         return await this.userSessionRepository.save(session);
     }
 };

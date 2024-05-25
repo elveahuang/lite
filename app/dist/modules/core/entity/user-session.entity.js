@@ -16,9 +16,28 @@ let UserSessionEntity = class UserSessionEntity extends id_entity_1.IdEntity {
     userId;
     sessionId;
     username;
-    host;
+    ip;
     ua;
+    clientId;
+    clientVersion;
+    startDatetime;
+    startYear;
+    startMonth;
+    startDay;
+    startHour;
+    startMinute;
     lastAccessDatetime;
+    lastAccessYear;
+    lastAccessMonth;
+    lastAccessDay;
+    lastAccessHour;
+    lastAccessMinute;
+    endDatetime;
+    endYear;
+    endMonth;
+    endDay;
+    endHour;
+    endMinute;
 };
 exports.UserSessionEntity = UserSessionEntity;
 __decorate([
@@ -34,17 +53,93 @@ __decorate([
     __metadata("design:type", String)
 ], UserSessionEntity.prototype, "username", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ name: 'host' }),
+    (0, typeorm_1.Column)({ name: 'ip' }),
     __metadata("design:type", String)
-], UserSessionEntity.prototype, "host", void 0);
+], UserSessionEntity.prototype, "ip", void 0);
 __decorate([
     (0, typeorm_1.Column)({ name: 'ua' }),
     __metadata("design:type", String)
 ], UserSessionEntity.prototype, "ua", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ name: 'last_access_datetime' }),
+    (0, typeorm_1.Column)({ name: 'client_id' }),
+    __metadata("design:type", String)
+], UserSessionEntity.prototype, "clientId", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ name: 'client_version' }),
+    __metadata("design:type", String)
+], UserSessionEntity.prototype, "clientVersion", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ name: 'start_datetime' }),
+    __metadata("design:type", Date)
+], UserSessionEntity.prototype, "startDatetime", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ name: 'start_year', comment: '退出时间' }),
+    __metadata("design:type", Number)
+], UserSessionEntity.prototype, "startYear", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ name: 'start_month', comment: '退出时间' }),
+    __metadata("design:type", Number)
+], UserSessionEntity.prototype, "startMonth", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ name: 'start_day', comment: '退出时间' }),
+    __metadata("design:type", Number)
+], UserSessionEntity.prototype, "startDay", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ name: 'start_hour', comment: '退出时间' }),
+    __metadata("design:type", Number)
+], UserSessionEntity.prototype, "startHour", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ name: 'start_minute', comment: '退出时间' }),
+    __metadata("design:type", Number)
+], UserSessionEntity.prototype, "startMinute", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ name: 'last_access_datetime', comment: '退出时间' }),
     __metadata("design:type", Date)
 ], UserSessionEntity.prototype, "lastAccessDatetime", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ name: 'last_access_year', comment: '退出时间' }),
+    __metadata("design:type", Number)
+], UserSessionEntity.prototype, "lastAccessYear", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ name: 'last_access_month', comment: '退出时间' }),
+    __metadata("design:type", Number)
+], UserSessionEntity.prototype, "lastAccessMonth", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ name: 'last_access_day', comment: '退出时间' }),
+    __metadata("design:type", Number)
+], UserSessionEntity.prototype, "lastAccessDay", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ name: 'last_access_hour', comment: '退出时间' }),
+    __metadata("design:type", Number)
+], UserSessionEntity.prototype, "lastAccessHour", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ name: 'last_access_minute', comment: '退出时间' }),
+    __metadata("design:type", Number)
+], UserSessionEntity.prototype, "lastAccessMinute", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ name: 'end_datetime', comment: '退出时间' }),
+    __metadata("design:type", Date)
+], UserSessionEntity.prototype, "endDatetime", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ name: 'end_year', comment: '退出时间' }),
+    __metadata("design:type", Number)
+], UserSessionEntity.prototype, "endYear", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ name: 'end_month', comment: '退出时间' }),
+    __metadata("design:type", Number)
+], UserSessionEntity.prototype, "endMonth", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ name: 'end_day', comment: '退出时间' }),
+    __metadata("design:type", Number)
+], UserSessionEntity.prototype, "endDay", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ name: 'end_hour', comment: '退出时间' }),
+    __metadata("design:type", Number)
+], UserSessionEntity.prototype, "endHour", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ name: 'end_minute', comment: '退出时间' }),
+    __metadata("design:type", Number)
+], UserSessionEntity.prototype, "endMinute", void 0);
 exports.UserSessionEntity = UserSessionEntity = __decorate([
     (0, typeorm_1.Entity)('sys_user_session')
 ], UserSessionEntity);

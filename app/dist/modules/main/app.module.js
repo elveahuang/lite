@@ -12,6 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.AppModule = void 0;
 const commons_module_1 = require("../../commons/commons.module");
 const env_1 = require("../../config/env");
+const account_module_1 = require("../account/account.module");
 const auth_module_1 = require("../auth/auth.module");
 const core_module_1 = require("../core/core.module");
 const api_controller_1 = require("./api.controller");
@@ -53,6 +54,7 @@ exports.AppModule = AppModule = __decorate([
             }),
             commons_module_1.CommonsModule,
             core_module_1.CoreModule,
+            account_module_1.AccountModule,
             auth_module_1.AuthModule,
         ],
         controllers: [app_controller_1.AppController, api_controller_1.ApiController],

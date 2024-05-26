@@ -17,12 +17,16 @@ const authority_app_controller_1 = require("./controller/app/authority.app.contr
 const role_app_controller_1 = require("./controller/app/role.app.controller");
 const user_app_controller_1 = require("./controller/app/user.app.controller");
 const authority_entity_1 = require("./entity/authority.entity");
+const config_entity_1 = require("./entity/config.entity");
+const lang_entity_1 = require("./entity/lang.entity");
 const role_authority_entity_1 = require("./entity/role-authority.entity");
 const role_entity_1 = require("./entity/role.entity");
 const user_role_entity_1 = require("./entity/user-role.entity");
 const user_session_entity_1 = require("./entity/user-session.entity");
 const user_entity_1 = require("./entity/user.entity");
 const authority_repository_1 = require("./repository/authority.repository");
+const config_repository_1 = require("./repository/config.repository");
+const lang_repository_1 = require("./repository/lang.repository");
 const role_authority_repository_1 = require("./repository/role-authority.repository");
 const role_repository_1 = require("./repository/role.repository");
 const user_role_repository_1 = require("./repository/user-role.repository");
@@ -47,6 +51,8 @@ exports.CoreModule = CoreModule = __decorate([
             (0, utils_1.createCustomRepository)(authority_entity_1.AuthorityEntity, authority_repository_1.CustomAuthorityRepository),
             (0, utils_1.createCustomRepository)(user_role_entity_1.UserRoleEntity, user_role_repository_1.CustomUserRoleRepository),
             (0, utils_1.createCustomRepository)(role_authority_entity_1.RoleAuthorityEntity, role_authority_repository_1.CustomRoleAuthorityRepository),
+            (0, utils_1.createCustomRepository)(config_entity_1.ConfigEntity, config_repository_1.CustomConfigRepository),
+            (0, utils_1.createCustomRepository)(lang_entity_1.LangEntity, lang_repository_1.CustomLangRepository),
             user_service_1.UserService,
             user_session_service_1.UserSessionService,
             role_service_1.RoleService,

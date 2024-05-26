@@ -9,58 +9,48 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AuthorityEntity = void 0;
+exports.ConfigEntity = void 0;
 const base_entity_1 = require("../../../commons/entity/base.entity");
 const typeorm_1 = require("typeorm");
-let AuthorityEntity = class AuthorityEntity extends base_entity_1.BaseEntity {
-    parentId;
+let ConfigEntity = class ConfigEntity extends base_entity_1.BaseEntity {
     code;
     title;
     label;
+    value;
+    defaultValue;
     description;
-    type;
-    idx;
-    status;
     source;
 };
-exports.AuthorityEntity = AuthorityEntity;
-__decorate([
-    (0, typeorm_1.Column)({ name: 'parent_id', comment: '父ID', type: 'bigint' }),
-    __metadata("design:type", BigInt)
-], AuthorityEntity.prototype, "parentId", void 0);
+exports.ConfigEntity = ConfigEntity;
 __decorate([
     (0, typeorm_1.Column)({ name: 'code', comment: '编号' }),
     __metadata("design:type", String)
-], AuthorityEntity.prototype, "code", void 0);
+], ConfigEntity.prototype, "code", void 0);
 __decorate([
     (0, typeorm_1.Column)({ name: 'title', comment: '标题' }),
     __metadata("design:type", String)
-], AuthorityEntity.prototype, "title", void 0);
+], ConfigEntity.prototype, "title", void 0);
 __decorate([
     (0, typeorm_1.Column)({ name: 'label', comment: '文本' }),
     __metadata("design:type", String)
-], AuthorityEntity.prototype, "label", void 0);
+], ConfigEntity.prototype, "label", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ name: 'value', comment: '配置内容' }),
+    __metadata("design:type", String)
+], ConfigEntity.prototype, "value", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ name: 'default_value', comment: '默认值' }),
+    __metadata("design:type", String)
+], ConfigEntity.prototype, "defaultValue", void 0);
 __decorate([
     (0, typeorm_1.Column)({ name: 'description', comment: '备注' }),
     __metadata("design:type", String)
-], AuthorityEntity.prototype, "description", void 0);
-__decorate([
-    (0, typeorm_1.Column)({ name: 'type', comment: '类型' }),
-    __metadata("design:type", String)
-], AuthorityEntity.prototype, "type", void 0);
-__decorate([
-    (0, typeorm_1.Column)({ name: 'idx', comment: '序号' }),
-    __metadata("design:type", Number)
-], AuthorityEntity.prototype, "idx", void 0);
-__decorate([
-    (0, typeorm_1.Column)({ name: 'status', comment: '状态' }),
-    __metadata("design:type", Number)
-], AuthorityEntity.prototype, "status", void 0);
+], ConfigEntity.prototype, "description", void 0);
 __decorate([
     (0, typeorm_1.Column)({ name: 'source', comment: '来源' }),
     __metadata("design:type", Number)
-], AuthorityEntity.prototype, "source", void 0);
-exports.AuthorityEntity = AuthorityEntity = __decorate([
-    (0, typeorm_1.Entity)('sys_authority')
-], AuthorityEntity);
-//# sourceMappingURL=authority.entity.js.map
+], ConfigEntity.prototype, "source", void 0);
+exports.ConfigEntity = ConfigEntity = __decorate([
+    (0, typeorm_1.Entity)('sys_config')
+], ConfigEntity);
+//# sourceMappingURL=config.entity.js.map

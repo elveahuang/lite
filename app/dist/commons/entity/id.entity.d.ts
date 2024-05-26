@@ -1,3 +1,3 @@
-export declare class IdEntity {
+export declare abstract class IdEntity {
     id: bigint;
 }

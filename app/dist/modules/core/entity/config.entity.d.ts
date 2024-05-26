@@ -1,12 +1,10 @@
 import { BaseEntity } from '@/commons/entity/base.entity';
-export declare class AuthorityEntity extends BaseEntity {
-    parentId: bigint;
+export declare class ConfigEntity extends BaseEntity {
     code: string;
     title: string;
     label: string;
+    value: string;
+    defaultValue: string;
     description: string;
-    type: string;
-    idx: number;
-    status: number;
     source: number;
 }

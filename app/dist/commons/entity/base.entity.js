@@ -13,8 +13,13 @@ exports.BaseEntity = void 0;
 const id_entity_1 = require("./id.entity");
 const typeorm_1 = require("typeorm");
 class BaseEntity extends id_entity_1.IdEntity {
+    active;
     createdAt;
+    createdBy;
     lastModifiedAt;
+    lastModifiedBy;
+    deletedAt;
+    deletedBy;
     onBeforeInsert() {
         this.createdAt = new Date();
         this.lastModifiedAt = new Date();
@@ -25,19 +30,33 @@ class BaseEntity extends id_entity_1.IdEntity {
 }
 exports.BaseEntity = BaseEntity;
 __decorate([
-    (0, typeorm_1.CreateDateColumn)({
-        name: 'created_at',
-        comment: '创建时间',
-    }),
+    (0, typeorm_1.Column)({ name: 'active', comment: '启用状态' }),
+    __metadata("design:type", Number)
+], BaseEntity.prototype, "active", void 0);
+__decorate([
+    (0, typeorm_1.CreateDateColumn)({ name: 'created_at', comment: '创建时间' }),
     __metadata("design:type", Date)
 ], BaseEntity.prototype, "createdAt", void 0);
 __decorate([
-    (0, typeorm_1.UpdateDateColumn)({
-        name: 'last_modified_at',
-        comment: '最后修改时间',
-    }),
+    (0, typeorm_1.Column)({ name: 'created_by', comment: '创建人', type: 'bigint' }),
+    __metadata("design:type", BigInt)
+], BaseEntity.prototype, "createdBy", void 0);
+__decorate([
+    (0, typeorm_1.UpdateDateColumn)({ name: 'last_modified_at', comment: '最后修改时间' }),
     __metadata("design:type", Date)
 ], BaseEntity.prototype, "lastModifiedAt", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ name: 'last_modified_by', comment: '最后修改人', type: 'bigint' }),
+    __metadata("design:type", BigInt)
+], BaseEntity.prototype, "lastModifiedBy", void 0);
+__decorate([
+    (0, typeorm_1.UpdateDateColumn)({ name: 'deleted_at', comment: '删除时间' }),
+    __metadata("design:type", Date)
+], BaseEntity.prototype, "deletedAt", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ name: 'deleted_by', comment: '删除人', type: 'bigint' }),
+    __metadata("design:type", BigInt)
+], BaseEntity.prototype, "deletedBy", void 0);
 __decorate([
     (0, typeorm_1.BeforeInsert)(),
     __metadata("design:type", Function),

@@ -13,19 +13,26 @@ exports.SimpleEntity = void 0;
 const id_entity_1 = require("./id.entity");
 const typeorm_1 = require("typeorm");
 class SimpleEntity extends id_entity_1.IdEntity {
+    active;
     createdAt;
+    createdBy;
     onBeforeInsert() {
         this.createdAt = new Date();
     }
 }
 exports.SimpleEntity = SimpleEntity;
 __decorate([
-    (0, typeorm_1.CreateDateColumn)({
-        name: 'created_at',
-        comment: '创建时间',
-    }),
+    (0, typeorm_1.Column)({ name: 'active', comment: 'active' }),
+    __metadata("design:type", Number)
+], SimpleEntity.prototype, "active", void 0);
+__decorate([
+    (0, typeorm_1.CreateDateColumn)({ name: 'created_at', comment: '创建时间' }),
     __metadata("design:type", Date)
 ], SimpleEntity.prototype, "createdAt", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ name: 'created_by', comment: '创建人', type: 'bigint' }),
+    __metadata("design:type", BigInt)
+], SimpleEntity.prototype, "createdBy", void 0);
 __decorate([
     (0, typeorm_1.BeforeInsert)(),
     __metadata("design:type", Function),

@@ -15,16 +15,41 @@ const typeorm_1 = require("typeorm");
 let RoleEntity = class RoleEntity extends base_entity_1.BaseEntity {
     code;
     title;
+    label;
+    description;
+    type;
+    status;
+    source;
 };
 exports.RoleEntity = RoleEntity;
 __decorate([
-    (0, typeorm_1.Column)({ name: 'code', comment: 'code' }),
+    (0, typeorm_1.Column)({ name: 'code', comment: '编号' }),
     __metadata("design:type", String)
 ], RoleEntity.prototype, "code", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ name: 'title', comment: 'title' }),
+    (0, typeorm_1.Column)({ name: 'title', comment: '标题' }),
     __metadata("design:type", String)
 ], RoleEntity.prototype, "title", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ name: 'label', comment: '文本' }),
+    __metadata("design:type", String)
+], RoleEntity.prototype, "label", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ name: 'description', comment: '备注' }),
+    __metadata("design:type", String)
+], RoleEntity.prototype, "description", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ name: 'type', comment: '类型' }),
+    __metadata("design:type", String)
+], RoleEntity.prototype, "type", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ name: 'status', comment: '状态' }),
+    __metadata("design:type", Number)
+], RoleEntity.prototype, "status", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ name: 'source', comment: '来源' }),
+    __metadata("design:type", Number)
+], RoleEntity.prototype, "source", void 0);
 exports.RoleEntity = RoleEntity = __decorate([
     (0, typeorm_1.Entity)('sys_role')
 ], RoleEntity);

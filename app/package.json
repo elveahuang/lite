@@ -37,7 +37,7 @@
         "joi-i18n": "^13.1.4",
         "log4js": "^6.9.1",
         "mongoose": "^8.4.0",
-        "mysql2": "^3.9.7",
+        "mysql2": "^3.9.8",
         "nestjs-i18n": "^10.4.5",
         "passport": "^0.7.0",
         "passport-jwt": "^4.0.1",

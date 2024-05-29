@@ -65,5 +65,5 @@
         "tsconfig-paths": "^4.2.0",
         "typescript": "^5.4.5"
     },
-    "packageManager": "pnpm@9.1.2"
+    "packageManager": "pnpm@9.1.3"
 }

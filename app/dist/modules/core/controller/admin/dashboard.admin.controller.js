@@ -17,7 +17,10 @@ let DashboardAdminController = class DashboardAdminController extends base_contr
     constructor() {
         super();
     }
-    index() {
+    dashboard() {
+        return { message: 'Hello world!' };
+    }
+    workbench() {
         return { message: 'Hello world!' };
     }
 };
@@ -28,7 +31,14 @@ __decorate([
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Object)
-], DashboardAdminController.prototype, "index", null);
+], DashboardAdminController.prototype, "dashboard", null);
+__decorate([
+    (0, anonymous_decorator_1.Anonymous)(),
+    (0, common_1.Get)('/workbench'),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Object)
+], DashboardAdminController.prototype, "workbench", null);
 exports.DashboardAdminController = DashboardAdminController = __decorate([
     (0, common_1.Controller)('/api/admin'),
     __metadata("design:paramtypes", [])

@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CustomUserRepository = void 0;
-exports.CustomUserRepository = {
+exports.UserRepositoryImpl = void 0;
+exports.UserRepositoryImpl = {
     async findByUsername(username) {
         return this.createQueryBuilder('u').where('u.username = :username', { username: username }).getOne();
     },

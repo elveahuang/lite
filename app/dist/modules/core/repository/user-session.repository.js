@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CustomUserSessionRepository = void 0;
-exports.CustomUserSessionRepository = {
+exports.UserSessionRepositoryImpl = void 0;
+exports.UserSessionRepositoryImpl = {
     async findBySessionId(sid) {
         return this.createQueryBuilder('s').where('s.sessionId = :sessionId', { sessionId: sid }).getOne();
     },

@@ -1,4 +1,4 @@
-import { RoleEntity } from '@/modules/core/entity/role.entity';
+import { RoleEntity } from '@/modules/core/domain/entity/role.entity';
 import { RoleRepository } from '@/modules/core/repository/role.repository';
 export declare class RoleService {
     private readonly roleRepository;

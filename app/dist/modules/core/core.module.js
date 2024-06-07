@@ -16,14 +16,14 @@ const user_admin_controller_1 = require("./controller/admin/user.admin.controlle
 const authority_app_controller_1 = require("./controller/app/authority.app.controller");
 const role_app_controller_1 = require("./controller/app/role.app.controller");
 const user_app_controller_1 = require("./controller/app/user.app.controller");
-const authority_entity_1 = require("./entity/authority.entity");
-const config_entity_1 = require("./entity/config.entity");
-const lang_entity_1 = require("./entity/lang.entity");
-const role_authority_entity_1 = require("./entity/role-authority.entity");
-const role_entity_1 = require("./entity/role.entity");
-const user_role_entity_1 = require("./entity/user-role.entity");
-const user_session_entity_1 = require("./entity/user-session.entity");
-const user_entity_1 = require("./entity/user.entity");
+const authority_entity_1 = require("./domain/entity/authority.entity");
+const config_entity_1 = require("./domain/entity/config.entity");
+const lang_entity_1 = require("./domain/entity/lang.entity");
+const role_authority_entity_1 = require("./domain/entity/role-authority.entity");
+const role_entity_1 = require("./domain/entity/role.entity");
+const user_role_entity_1 = require("./domain/entity/user-role.entity");
+const user_session_entity_1 = require("./domain/entity/user-session.entity");
+const user_entity_1 = require("./domain/entity/user.entity");
 const authority_repository_1 = require("./repository/authority.repository");
 const config_repository_1 = require("./repository/config.repository");
 const lang_repository_1 = require("./repository/lang.repository");
@@ -45,14 +45,14 @@ exports.CoreModule = CoreModule = __decorate([
     (0, common_1.Module)({
         imports: [typeorm_1.TypeOrmModule.forFeature([user_entity_1.UserEntity, user_session_entity_1.UserSessionEntity, role_entity_1.RoleEntity, authority_entity_1.AuthorityEntity, user_role_entity_1.UserRoleEntity, role_authority_entity_1.RoleAuthorityEntity])],
         providers: [
-            (0, utils_1.createCustomRepository)(user_entity_1.UserEntity, user_repository_1.CustomUserRepository),
-            (0, utils_1.createCustomRepository)(user_session_entity_1.UserSessionEntity, user_session_repository_1.CustomUserSessionRepository),
-            (0, utils_1.createCustomRepository)(role_entity_1.RoleEntity, role_repository_1.CustomRoleRepository),
-            (0, utils_1.createCustomRepository)(authority_entity_1.AuthorityEntity, authority_repository_1.CustomAuthorityRepository),
-            (0, utils_1.createCustomRepository)(user_role_entity_1.UserRoleEntity, user_role_repository_1.CustomUserRoleRepository),
-            (0, utils_1.createCustomRepository)(role_authority_entity_1.RoleAuthorityEntity, role_authority_repository_1.CustomRoleAuthorityRepository),
-            (0, utils_1.createCustomRepository)(config_entity_1.ConfigEntity, config_repository_1.CustomConfigRepository),
-            (0, utils_1.createCustomRepository)(lang_entity_1.LangEntity, lang_repository_1.CustomLangRepository),
+            (0, utils_1.createCustomRepository)(user_entity_1.UserEntity, user_repository_1.UserRepositoryImpl),
+            (0, utils_1.createCustomRepository)(user_session_entity_1.UserSessionEntity, user_session_repository_1.UserSessionRepositoryImpl),
+            (0, utils_1.createCustomRepository)(role_entity_1.RoleEntity, role_repository_1.RoleRepositoryImpl),
+            (0, utils_1.createCustomRepository)(authority_entity_1.AuthorityEntity, authority_repository_1.AuthorityRepositoryImpl),
+            (0, utils_1.createCustomRepository)(user_role_entity_1.UserRoleEntity, user_role_repository_1.UserRoleRepositoryImpl),
+            (0, utils_1.createCustomRepository)(role_authority_entity_1.RoleAuthorityEntity, role_authority_repository_1.RoleAuthorityRepositoryImpl),
+            (0, utils_1.createCustomRepository)(config_entity_1.ConfigEntity, config_repository_1.ConfigRepositoryImpl),
+            (0, utils_1.createCustomRepository)(lang_entity_1.LangEntity, lang_repository_1.LangRepositoryImpl),
             user_service_1.UserService,
             user_session_service_1.UserSessionService,
             role_service_1.RoleService,

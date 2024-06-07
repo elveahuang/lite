@@ -13,11 +13,16 @@ exports.AppModule = void 0;
 const commons_module_1 = require("../../commons/commons.module");
 const env_1 = require("../../config/env");
 const account_module_1 = require("../account/account.module");
+const announcement_module_1 = require("../announcement/announcement.module");
+const attachment_module_1 = require("../attachment/attachment.module");
 const auth_module_1 = require("../auth/auth.module");
+const banner_module_1 = require("../banner/banner.module");
+const catalog_module_1 = require("../catalog/catalog.module");
 const core_module_1 = require("../core/core.module");
 const api_controller_1 = require("./api.controller");
 const app_controller_1 = require("./app.controller");
 const app_service_1 = require("./app.service");
+const product_module_1 = require("../product/product.module");
 const common_1 = require("@nestjs/common");
 const config_1 = require("@nestjs/config");
 const jwt_1 = require("@nestjs/jwt");
@@ -56,6 +61,11 @@ exports.AppModule = AppModule = __decorate([
             core_module_1.CoreModule,
             account_module_1.AccountModule,
             auth_module_1.AuthModule,
+            catalog_module_1.CatalogModule,
+            attachment_module_1.AttachmentModule,
+            announcement_module_1.AnnouncementModule,
+            banner_module_1.BannerModule,
+            product_module_1.ProductModule,
         ],
         controllers: [app_controller_1.AppController, api_controller_1.ApiController],
         providers: [app_service_1.AppService, jwt_1.JwtService],

@@ -13,7 +13,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RoleService = void 0;
-const role_entity_1 = require("../entity/role.entity");
+const role_entity_1 = require("../domain/entity/role.entity");
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
 let RoleService = class RoleService {

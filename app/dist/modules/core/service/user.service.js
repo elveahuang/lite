@@ -13,9 +13,9 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserService = void 0;
-const authority_entity_1 = require("../entity/authority.entity");
-const role_entity_1 = require("../entity/role.entity");
-const user_entity_1 = require("../entity/user.entity");
+const authority_entity_1 = require("../domain/entity/authority.entity");
+const role_entity_1 = require("../domain/entity/role.entity");
+const user_entity_1 = require("../domain/entity/user.entity");
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
 let UserService = class UserService {
@@ -26,6 +26,9 @@ let UserService = class UserService {
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
         this.authorityRepository = authorityRepository;
+    }
+    async search(request) {
+        return this.userRepository.find();
     }
     async findByUsername(username) {
         return await this.userRepository.findByUsername(username);

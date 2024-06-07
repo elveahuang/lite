@@ -1,6 +1,6 @@
 import { RequestContext } from '@/commons/web/request-context';
 import { JwtPayload } from '@/modules/auth/passport/jwt.type';
-import { UserSessionEntity } from '@/modules/core/entity/user-session.entity';
+import { UserSessionEntity } from '@/modules/core/domain/entity/user-session.entity';
 import { UserSessionRepository } from '@/modules/core/repository/user-session.repository';
 export declare class UserSessionService {
     private readonly userSessionRepository;

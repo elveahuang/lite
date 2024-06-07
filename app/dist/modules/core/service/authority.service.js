@@ -13,7 +13,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AuthorityService = void 0;
-const authority_entity_1 = require("../entity/authority.entity");
+const authority_entity_1 = require("../domain/entity/authority.entity");
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
 let AuthorityService = class AuthorityService {

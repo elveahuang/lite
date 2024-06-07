@@ -13,7 +13,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.LangService = void 0;
-const lang_entity_1 = require("../entity/lang.entity");
+const lang_entity_1 = require("../domain/entity/lang.entity");
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
 let LangService = class LangService {

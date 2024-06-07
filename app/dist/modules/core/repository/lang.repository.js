@@ -1,5 +1,5 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CustomLangRepository = void 0;
-exports.CustomLangRepository = {};
+exports.LangRepositoryImpl = void 0;
+exports.LangRepositoryImpl = {};
 //# sourceMappingURL=lang.repository.js.map

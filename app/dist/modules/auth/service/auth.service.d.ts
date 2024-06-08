@@ -1,6 +1,6 @@
 import { Principal } from '@/commons/security/principal';
+import { R } from '@/commons/types';
 import { RequestContext } from '@/commons/web/request-context';
-import { R } from '@/commons/web/response';
 import { CredentialsDto } from '@/modules/auth/dto/credentials.dto';
 import { JwtPayload, JwtResponse } from '@/modules/auth/passport/jwt.type';
 import { AuthorityService } from '@/modules/core/service/authority.service';

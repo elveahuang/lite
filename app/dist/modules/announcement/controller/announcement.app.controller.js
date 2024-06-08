@@ -14,16 +14,19 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AnnouncementAppController = void 0;
 const anonymous_decorator_1 = require("../../../commons/decorator/anonymous.decorator");
+const web_1 = require("../../../commons/utils/web");
+const base_controller_1 = require("../../../commons/web/base.controller");
 const announcement_search_request_1 = require("../domain/request/announcement-search-request");
 const announcement_service_1 = require("../service/announcement.service");
 const common_1 = require("@nestjs/common");
-let AnnouncementAppController = class AnnouncementAppController {
+let AnnouncementAppController = class AnnouncementAppController extends base_controller_1.BaseController {
     announcementService;
     constructor(announcementService) {
+        super();
         this.announcementService = announcementService;
     }
     async list(request) {
-        return await this.announcementService.findAll();
+        return web_1.Web.page(await this.announcementService.findAll(request));
     }
 };
 exports.AnnouncementAppController = AnnouncementAppController;

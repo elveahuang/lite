@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.createCustomRepository = exports.log = exports.uuid = void 0;
+exports.toPage = exports.createCustomRepository = exports.log = exports.uuid = void 0;
 const typeorm_1 = require("@nestjs/typeorm");
 const uuid_1 = require("uuid");
 const uuid = () => {
@@ -21,4 +21,13 @@ const createCustomRepository = (entity, repository) => {
     };
 };
 exports.createCustomRepository = createCustomRepository;
+const toPage = (data, total, request) => {
+    return {
+        content: data,
+        total: total,
+        page: request.page,
+        limit: request.limit,
+    };
+};
+exports.toPage = toPage;
 //# sourceMappingURL=index.js.map

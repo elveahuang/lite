@@ -1,4 +1,4 @@
-import { R } from '../web/response';
+import { Page, R } from '@/commons/types';
 export declare class Web {
     static STATUS_SUCCESS: number;
     static STATUS_ERROR: number;
@@ -14,4 +14,5 @@ export declare class Web {
         data: any;
         message: string;
     };
+    static page<T>(data: Page<T>): R<Page<T>>;
 }

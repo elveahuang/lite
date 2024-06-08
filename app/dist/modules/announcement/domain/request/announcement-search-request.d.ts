@@ -1,3 +1,3 @@
-import { PageRequest } from '@/commons/web/page-request';
-export declare class AnnouncementSearchRequest extends PageRequest {
+import { Pagination } from '@/commons/types';
+export declare class AnnouncementSearchRequest extends Pagination {
 }

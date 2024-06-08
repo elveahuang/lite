@@ -36,6 +36,13 @@ class Web {
             };
         }
     }
+    static page(data) {
+        return {
+            code: 200,
+            data: data,
+            message: '',
+        };
+    }
 }
 exports.Web = Web;
 //# sourceMappingURL=web.js.map

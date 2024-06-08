@@ -14,6 +14,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AnnouncementService = void 0;
 const base_entity_service_1 = require("../../../commons/service/base-entity.service");
+const utils_1 = require("../../../commons/utils");
 const announcement_entity_1 = require("../domain/entity/announcement.entity");
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
@@ -26,8 +27,13 @@ let AnnouncementService = class AnnouncementService extends base_entity_service_
     async search(request) {
         return this.announcementRepository.find();
     }
-    async findAll() {
-        return this.announcementRepository.find();
+    async findAll(request) {
+        const { page, limit } = request;
+        const result = await this.announcementRepository.findAndCount({
+            skip: (page - 1) * limit,
+            take: limit,
+        });
+        return (0, utils_1.toPage)(result[0], result[1], request);
     }
 };
 exports.AnnouncementService = AnnouncementService;

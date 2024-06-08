@@ -1,3 +1,4 @@
+import { Page, Pagination } from '@/commons/types';
 import { DataSource } from 'typeorm';
 export declare const uuid: () => string;
 export declare function log(log: any): void;
@@ -6,3 +7,4 @@ export declare const createCustomRepository: (entity: any, repository: any) => {
     inject: (string | Function | import("@nestjs/common").Type<DataSource>)[];
     useFactory(datasource: DataSource): any;
 };
+export declare const toPage: <T>(data: T[], total: number, request: Pagination) => Page<T>;

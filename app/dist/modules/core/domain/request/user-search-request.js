@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserSearchRequest = void 0;
-const page_request_1 = require("../../../../commons/web/page-request");
-class UserSearchRequest extends page_request_1.PageRequest {
+const types_1 = require("../../../../commons/types");
+class UserSearchRequest extends types_1.Pagination {
 }
 exports.UserSearchRequest = UserSearchRequest;
 //# sourceMappingURL=user-search-request.js.map

@@ -7,5 +7,5 @@ export declare class AnnouncementService extends BaseEntityService {
     private readonly announcementRepository;
     constructor(announcementRepository: AnnouncementRepository);
     search(request: AnnouncementSearchRequest): Promise<AnnouncementEntity[]>;
-    findAll(request: AnnouncementSearchRequest): Promise<Page<AnnouncementEntity>>;
+    findAll(request?: AnnouncementSearchRequest): Promise<Page<AnnouncementEntity>>;
 }

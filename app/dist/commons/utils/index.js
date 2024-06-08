@@ -26,7 +26,7 @@ const toPage = (data, total, request) => {
         content: data,
         total: total,
         page: request.page,
-        limit: request.limit,
+        size: request.size,
     };
 };
 exports.toPage = toPage;

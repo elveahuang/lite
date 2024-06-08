@@ -7,10 +7,11 @@ export declare class Page<T> {
     content: T[];
     total: number;
     page: number;
-    limit: number;
+    size: number;
 }
 export declare class Pagination {
-    readonly page: number;
-    readonly limit?: number;
+    readonly page?: number;
+    readonly size?: number;
     readonly q?: string;
 }
+export declare const defaultPagination: Pagination;

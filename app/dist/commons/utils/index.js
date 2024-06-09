@@ -24,9 +24,11 @@ exports.createCustomRepository = createCustomRepository;
 const toPage = (data, total, request) => {
     return {
         content: data,
-        total: total,
-        page: request.page,
-        size: request.size,
+        totalElements: total,
+        pageable: {
+            pageNumber: request.page,
+            pageSize: request.size,
+        },
     };
 };
 exports.toPage = toPage;

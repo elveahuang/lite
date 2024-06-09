@@ -5,9 +5,11 @@ export declare class R<T = any> {
 }
 export declare class Page<T> {
     content: T[];
-    total: number;
-    page: number;
-    size: number;
+    totalElements?: number | string;
+    pageable?: {
+        pageNumber?: number;
+        pageSize?: number;
+    };
 }
 export declare class Pagination {
     readonly page?: number;

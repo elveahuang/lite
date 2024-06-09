@@ -14,6 +14,8 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AnnouncementAdminController = void 0;
 const anonymous_decorator_1 = require("../../../commons/decorator/anonymous.decorator");
+const web_1 = require("../../../commons/utils/web");
+const announcement_delete_request_1 = require("../domain/request/announcement-delete-request");
 const announcement_search_request_1 = require("../domain/request/announcement-search-request");
 const announcement_service_1 = require("../service/announcement.service");
 const common_1 = require("@nestjs/common");
@@ -22,19 +24,31 @@ let AnnouncementAdminController = class AnnouncementAdminController {
     constructor(announcementService) {
         this.announcementService = announcementService;
     }
-    async list(request) {
-        return await this.announcementService.search(request);
+    async search(request) {
+        return web_1.Web.page(await this.announcementService.findAll(request));
+    }
+    async delete(request) {
+        console.log(request);
+        return web_1.Web.success();
     }
 };
 exports.AnnouncementAdminController = AnnouncementAdminController;
 __decorate([
     (0, anonymous_decorator_1.Anonymous)(),
-    (0, common_1.Post)('search'),
+    (0, common_1.Post)('/search'),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [announcement_search_request_1.AnnouncementSearchRequest]),
     __metadata("design:returntype", Promise)
-], AnnouncementAdminController.prototype, "list", null);
+], AnnouncementAdminController.prototype, "search", null);
+__decorate([
+    (0, anonymous_decorator_1.Anonymous)(),
+    (0, common_1.Post)('/delete'),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [announcement_delete_request_1.AnnouncementDeleteRequest]),
+    __metadata("design:returntype", Promise)
+], AnnouncementAdminController.prototype, "delete", null);
 exports.AnnouncementAdminController = AnnouncementAdminController = __decorate([
     (0, common_1.Controller)('/api/admin/announcement'),
     __metadata("design:paramtypes", [announcement_service_1.AnnouncementService])

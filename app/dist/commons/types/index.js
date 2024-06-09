@@ -9,9 +9,8 @@ class R {
 exports.R = R;
 class Page {
     content;
-    total;
-    page;
-    size;
+    totalElements;
+    pageable;
 }
 exports.Page = Page;
 class Pagination {

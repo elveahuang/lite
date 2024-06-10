@@ -14,6 +14,7 @@ const base_entity_1 = require("../../../../commons/entity/base.entity");
 const typeorm_1 = require("typeorm");
 let AnnouncementEntity = class AnnouncementEntity extends base_entity_1.BaseEntity {
     title;
+    content;
     description;
     startDatetime;
     endDatetime;
@@ -24,6 +25,10 @@ __decorate([
     (0, typeorm_1.Column)({ name: 'title', comment: '标题' }),
     __metadata("design:type", String)
 ], AnnouncementEntity.prototype, "title", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ name: 'content', comment: '备注' }),
+    __metadata("design:type", String)
+], AnnouncementEntity.prototype, "content", void 0);
 __decorate([
     (0, typeorm_1.Column)({ name: 'description', comment: '备注' }),
     __metadata("design:type", String)

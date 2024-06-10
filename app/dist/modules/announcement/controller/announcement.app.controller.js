@@ -16,7 +16,7 @@ exports.AnnouncementAppController = void 0;
 const anonymous_decorator_1 = require("../../../commons/decorator/anonymous.decorator");
 const web_1 = require("../../../commons/utils/web");
 const base_controller_1 = require("../../../commons/web/base.controller");
-const announcement_search_request_1 = require("../domain/request/announcement-search-request");
+const announcement_list_dto_1 = require("../domain/dto/announcement-list.dto");
 const announcement_service_1 = require("../service/announcement.service");
 const common_1 = require("@nestjs/common");
 let AnnouncementAppController = class AnnouncementAppController extends base_controller_1.BaseController {
@@ -28,6 +28,9 @@ let AnnouncementAppController = class AnnouncementAppController extends base_con
     async list(request) {
         return web_1.Web.page(await this.announcementService.findAll(request));
     }
+    async view(id) {
+        return web_1.Web.success(await this.announcementService.findById(id));
+    }
 };
 exports.AnnouncementAppController = AnnouncementAppController;
 __decorate([
@@ -35,9 +38,17 @@ __decorate([
     (0, common_1.Post)('/list'),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [announcement_search_request_1.AnnouncementSearchRequest]),
+    __metadata("design:paramtypes", [announcement_list_dto_1.AnnouncementListDto]),
     __metadata("design:returntype", Promise)
 ], AnnouncementAppController.prototype, "list", null);
+__decorate([
+    (0, anonymous_decorator_1.Anonymous)(),
+    (0, common_1.Post)('/view'),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [BigInt]),
+    __metadata("design:returntype", Promise)
+], AnnouncementAppController.prototype, "view", null);
 exports.AnnouncementAppController = AnnouncementAppController = __decorate([
     (0, common_1.Controller)('/api/announcement'),
     __metadata("design:paramtypes", [announcement_service_1.AnnouncementService])

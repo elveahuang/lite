@@ -1,11 +1,14 @@
 import { BaseEntityService } from '@/commons/service/base-entity.service';
-import { Page } from '@/commons/types';
+import { EntityKey, Page } from '@/commons/types';
+import { AnnouncementListDto } from '@/modules/announcement/domain/dto/announcement-list.dto';
+import { AnnouncementSaveDto } from '@/modules/announcement/domain/dto/announcement-save.dto';
 import { AnnouncementEntity } from '@/modules/announcement/domain/entity/announcement.entity';
-import { AnnouncementSearchRequest } from '@/modules/announcement/domain/request/announcement-search-request';
 import { AnnouncementRepository } from '@/modules/announcement/repository/announcement.repository';
-export declare class AnnouncementService extends BaseEntityService {
+export declare class AnnouncementService extends BaseEntityService<AnnouncementEntity, AnnouncementRepository> {
     private readonly announcementRepository;
     constructor(announcementRepository: AnnouncementRepository);
-    search(request: AnnouncementSearchRequest): Promise<AnnouncementEntity[]>;
-    findAll(request?: AnnouncementSearchRequest): Promise<Page<AnnouncementEntity>>;
+    save(dto: AnnouncementSaveDto): Promise<void>;
+    search(request: AnnouncementListDto): Promise<AnnouncementEntity[]>;
+    findById(id: EntityKey): Promise<AnnouncementEntity>;
+    findAll(request?: AnnouncementListDto): Promise<Page<AnnouncementEntity>>;
 }

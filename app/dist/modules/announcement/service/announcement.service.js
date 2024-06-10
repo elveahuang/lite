@@ -14,6 +14,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AnnouncementService = void 0;
 const base_entity_service_1 = require("../../../commons/service/base-entity.service");
+const entity_service_1 = require("../../../commons/service/entity.service");
 const types_1 = require("../../../commons/types");
 const utils_1 = require("../../../commons/utils");
 const announcement_entity_1 = require("../domain/entity/announcement.entity");
@@ -22,11 +23,26 @@ const typeorm_1 = require("@nestjs/typeorm");
 let AnnouncementService = class AnnouncementService extends base_entity_service_1.BaseEntityService {
     announcementRepository;
     constructor(announcementRepository) {
-        super();
+        super(announcementRepository);
         this.announcementRepository = announcementRepository;
+    }
+    async save(dto) {
+        const entity = new announcement_entity_1.AnnouncementEntity();
+        entity.id = dto.id;
+        entity.title = dto.title;
+        entity.content = dto.content;
+        await this.announcementRepository.save(entity);
     }
     async search(request) {
         return this.announcementRepository.find();
+    }
+    async findById(id) {
+        entity_service_1.EntityService.getInstance(this.announcementRepository);
+        const entity = await this.announcementRepository.findOne({ where: { id: id } });
+        if (!entity) {
+            console.log('23');
+        }
+        return entity;
     }
     async findAll(request = types_1.defaultPagination) {
         const { page, size } = request;

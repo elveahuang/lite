@@ -3,19 +3,20 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Web = void 0;
 const radash_1 = require("radash");
 class Web {
-    static STATUS_SUCCESS = 1;
-    static STATUS_ERROR = 0;
+    static STATUS_SUCCESS = 200;
+    static STATUS_ERROR = 10000;
     static success(data = {}) {
         if ((0, radash_1.isEmpty)(data)) {
             return {
                 code: Web.STATUS_SUCCESS,
-                data: [],
+                message: 'success',
             };
         }
         else {
             return {
                 code: Web.STATUS_SUCCESS,
                 data: data,
+                message: 'success',
             };
         }
     }

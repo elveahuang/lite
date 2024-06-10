@@ -15,10 +15,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.AnnouncementAdminController = void 0;
 const anonymous_decorator_1 = require("../../../commons/decorator/anonymous.decorator");
 const web_1 = require("../../../commons/utils/web");
-const announcement_delete_request_1 = require("../domain/request/announcement-delete-request");
-const announcement_search_request_1 = require("../domain/request/announcement-search-request");
+const announcement_delete_dto_1 = require("../domain/dto/announcement-delete.dto");
+const announcement_list_dto_1 = require("../domain/dto/announcement-list.dto");
+const announcement_save_dto_1 = require("../domain/dto/announcement-save.dto");
 const announcement_service_1 = require("../service/announcement.service");
 const common_1 = require("@nestjs/common");
+const swagger_1 = require("@nestjs/swagger");
 let AnnouncementAdminController = class AnnouncementAdminController {
     announcementService;
     constructor(announcementService) {
@@ -26,6 +28,13 @@ let AnnouncementAdminController = class AnnouncementAdminController {
     }
     async search(request) {
         return web_1.Web.page(await this.announcementService.findAll(request));
+    }
+    async view(id) {
+        return web_1.Web.success(await this.announcementService.findById(id));
+    }
+    async save(dto) {
+        this.announcementService.save(dto).then();
+        return web_1.Web.success();
     }
     async delete(request) {
         console.log(request);
@@ -35,18 +44,35 @@ let AnnouncementAdminController = class AnnouncementAdminController {
 exports.AnnouncementAdminController = AnnouncementAdminController;
 __decorate([
     (0, anonymous_decorator_1.Anonymous)(),
-    (0, common_1.Post)('/search'),
+    (0, swagger_1.ApiOperation)({ summary: '资讯列表' }),
+    (0, common_1.Post)('/list'),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [announcement_search_request_1.AnnouncementSearchRequest]),
+    __metadata("design:paramtypes", [announcement_list_dto_1.AnnouncementListDto]),
     __metadata("design:returntype", Promise)
 ], AnnouncementAdminController.prototype, "search", null);
+__decorate([
+    (0, anonymous_decorator_1.Anonymous)(),
+    (0, common_1.Post)('/view'),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [BigInt]),
+    __metadata("design:returntype", Promise)
+], AnnouncementAdminController.prototype, "view", null);
+__decorate([
+    (0, anonymous_decorator_1.Anonymous)(),
+    (0, common_1.Post)('/save'),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [announcement_save_dto_1.AnnouncementSaveDto]),
+    __metadata("design:returntype", Promise)
+], AnnouncementAdminController.prototype, "save", null);
 __decorate([
     (0, anonymous_decorator_1.Anonymous)(),
     (0, common_1.Post)('/delete'),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [announcement_delete_request_1.AnnouncementDeleteRequest]),
+    __metadata("design:paramtypes", [announcement_delete_dto_1.AnnouncementDeleteDto]),
     __metadata("design:returntype", Promise)
 ], AnnouncementAdminController.prototype, "delete", null);
 exports.AnnouncementAdminController = AnnouncementAdminController = __decorate([

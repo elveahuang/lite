@@ -15,15 +15,17 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.AnnouncementAdminController = void 0;
 const anonymous_decorator_1 = require("../../../commons/decorator/anonymous.decorator");
 const web_1 = require("../../../commons/utils/web");
+const base_entity_controller_1 = require("../../../commons/web/base-entity.controller");
 const announcement_delete_dto_1 = require("../domain/dto/announcement-delete.dto");
 const announcement_list_dto_1 = require("../domain/dto/announcement-list.dto");
 const announcement_save_dto_1 = require("../domain/dto/announcement-save.dto");
 const announcement_service_1 = require("../service/announcement.service");
 const common_1 = require("@nestjs/common");
 const swagger_1 = require("@nestjs/swagger");
-let AnnouncementAdminController = class AnnouncementAdminController {
+let AnnouncementAdminController = class AnnouncementAdminController extends base_entity_controller_1.BaseEntityController {
     announcementService;
     constructor(announcementService) {
+        super();
         this.announcementService = announcementService;
     }
     async search(request) {

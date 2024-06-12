@@ -13,10 +13,6 @@ class BaseEntityService {
     getEntityService(repository) {
         return entity_service_1.EntityService.getInstance(repository);
     }
-    async deleteById(id) { }
-    async deleteSoftById(id) { }
-    async batchDeleteById(id) { }
-    async batchSoftDeleteById(id) { }
 }
 exports.BaseEntityService = BaseEntityService;
 //# sourceMappingURL=base-entity.service.js.map

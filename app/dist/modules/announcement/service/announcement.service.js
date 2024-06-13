@@ -13,44 +13,22 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AnnouncementService = void 0;
-const base_entity_service_1 = require("../../../commons/service/base-entity.service");
 const entity_service_1 = require("../../../commons/service/entity.service");
-const types_1 = require("../../../commons/types");
-const utils_1 = require("../../../commons/utils");
 const announcement_entity_1 = require("../domain/entity/announcement.entity");
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
-let AnnouncementService = class AnnouncementService extends base_entity_service_1.BaseEntityService {
+let AnnouncementService = class AnnouncementService extends entity_service_1.EntityService {
     announcementRepository;
     constructor(announcementRepository) {
         super(announcementRepository);
         this.announcementRepository = announcementRepository;
     }
-    async save(dto) {
+    async saveAnnouncement(dto) {
         const entity = new announcement_entity_1.AnnouncementEntity();
         entity.id = dto.id;
         entity.title = dto.title;
         entity.content = dto.content;
         await this.announcementRepository.save(entity);
-    }
-    async search(request) {
-        return this.announcementRepository.find();
-    }
-    async findById(id) {
-        entity_service_1.EntityService.getInstance(this.announcementRepository);
-        const entity = await this.announcementRepository.findOne({ where: { id: id } });
-        if (!entity) {
-            console.log('23');
-        }
-        return entity;
-    }
-    async findAll(request = types_1.defaultPagination) {
-        const { page, size } = request;
-        const result = await this.announcementRepository.findAndCount({
-            skip: (page - 1) * size,
-            take: size,
-        });
-        return (0, utils_1.toPage)(result[0], result[1], request);
     }
 };
 exports.AnnouncementService = AnnouncementService;

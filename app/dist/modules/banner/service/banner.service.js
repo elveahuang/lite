@@ -13,16 +13,21 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.BannerService = void 0;
-const banner_entity_1 = require("../entity/banner.entity");
+const entity_service_1 = require("../../../commons/service/entity.service");
+const banner_entity_1 = require("../domain/entity/banner.entity");
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
-let BannerService = class BannerService {
+let BannerService = class BannerService extends entity_service_1.EntityService {
     bannerRepository;
     constructor(bannerRepository) {
+        super(bannerRepository);
         this.bannerRepository = bannerRepository;
     }
-    async findAll() {
-        return this.bannerRepository.find();
+    async saveBanner(dto) {
+        const entity = new banner_entity_1.BannerEntity();
+        entity.id = dto.id;
+        entity.title = dto.title;
+        await this.getRepository().save(entity);
     }
 };
 exports.BannerService = BannerService;

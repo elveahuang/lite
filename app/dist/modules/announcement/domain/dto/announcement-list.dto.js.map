@@ -1,1 +1,1 @@
-{"version":3,"file":"announcement-list.dto.js","sourceRoot":"","sources":["../../../../../src/modules/announcement/domain/dto/announcement-list.dto.ts"],"names":[],"mappings":";;;AAAA,qDAA6C;AAE7C,MAAa,mBAAoB,SAAQ,kBAAU;CAAG;AAAtD,kDAAsD"}
+{"version":3,"file":"announcement-list.dto.js","sourceRoot":"","sources":["../../../../../src/modules/announcement/domain/dto/announcement-list.dto.ts"],"names":[],"mappings":";;;AAAA,qDAAkD;AAElD,MAAa,mBAAoB,SAAQ,uBAAe;CAAG;AAA3D,kDAA2D"}

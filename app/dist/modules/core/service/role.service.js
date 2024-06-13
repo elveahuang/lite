@@ -13,13 +13,20 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RoleService = void 0;
+const entity_service_1 = require("../../../commons/service/entity.service");
 const role_entity_1 = require("../domain/entity/role.entity");
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
-let RoleService = class RoleService {
+let RoleService = class RoleService extends entity_service_1.EntityService {
     roleRepository;
     constructor(roleRepository) {
+        super(roleRepository);
         this.roleRepository = roleRepository;
+    }
+    async saveRole(dto) {
+        const entity = new role_entity_1.RoleEntity();
+        entity.id = dto.id;
+        await this.getRepository().save(entity);
     }
     async findByUserId(userId) {
         return await this.roleRepository.findByUserId(userId);

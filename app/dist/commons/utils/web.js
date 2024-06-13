@@ -41,7 +41,7 @@ class Web {
         return {
             code: 200,
             data: data,
-            message: '',
+            message: 'success',
         };
     }
 }

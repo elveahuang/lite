@@ -16,8 +16,8 @@ exports.AnnouncementAppController = void 0;
 const anonymous_decorator_1 = require("../../../commons/decorator/anonymous.decorator");
 const web_1 = require("../../../commons/utils/web");
 const base_controller_1 = require("../../../commons/web/base.controller");
-const announcement_list_dto_1 = require("../domain/dto/announcement-list.dto");
 const announcement_service_1 = require("../service/announcement.service");
+const attachment_file_upload_dto_1 = require("../../attachment/domain/dto/attachment-file-upload.dto");
 const common_1 = require("@nestjs/common");
 let AnnouncementAppController = class AnnouncementAppController extends base_controller_1.BaseController {
     announcementService;
@@ -25,8 +25,8 @@ let AnnouncementAppController = class AnnouncementAppController extends base_con
         super();
         this.announcementService = announcementService;
     }
-    async list(request) {
-        return web_1.Web.page(await this.announcementService.findAll(request));
+    async list(dto) {
+        return web_1.Web.success();
     }
     async view(id) {
         return web_1.Web.success(await this.announcementService.findById(id));
@@ -35,10 +35,10 @@ let AnnouncementAppController = class AnnouncementAppController extends base_con
 exports.AnnouncementAppController = AnnouncementAppController;
 __decorate([
     (0, anonymous_decorator_1.Anonymous)(),
-    (0, common_1.Post)('/list'),
+    (0, common_1.Post)('/upload'),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [announcement_list_dto_1.AnnouncementListDto]),
+    __metadata("design:paramtypes", [attachment_file_upload_dto_1.AttachmentFileUploadDto]),
     __metadata("design:returntype", Promise)
 ], AnnouncementAppController.prototype, "list", null);
 __decorate([

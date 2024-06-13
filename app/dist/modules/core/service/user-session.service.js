@@ -13,12 +13,14 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserSessionService = void 0;
+const entity_service_1 = require("../../../commons/service/entity.service");
 const user_session_entity_1 = require("../domain/entity/user-session.entity");
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
-let UserSessionService = class UserSessionService {
+let UserSessionService = class UserSessionService extends entity_service_1.EntityService {
     userSessionRepository;
     constructor(userSessionRepository) {
+        super(userSessionRepository);
         this.userSessionRepository = userSessionRepository;
     }
     async findAll() {

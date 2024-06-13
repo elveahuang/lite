@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.DeleteRequest = exports.defaultPagination = exports.Pagination = exports.Page = exports.R = void 0;
+exports.DeleteQuery = exports.defaultPagination = exports.PaginationQuery = exports.Pagination = exports.Page = exports.R = void 0;
 class R {
     code;
     message;
@@ -19,12 +19,15 @@ class Pagination {
     q = '';
 }
 exports.Pagination = Pagination;
+class PaginationQuery extends Pagination {
+}
+exports.PaginationQuery = PaginationQuery;
 exports.defaultPagination = {
     page: 1,
     size: 12,
 };
-class DeleteRequest {
+class DeleteQuery {
     ids;
 }
-exports.DeleteRequest = DeleteRequest;
+exports.DeleteQuery = DeleteQuery;
 //# sourceMappingURL=index.js.map

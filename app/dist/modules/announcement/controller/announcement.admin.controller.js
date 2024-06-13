@@ -14,32 +14,32 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AnnouncementAdminController = void 0;
 const anonymous_decorator_1 = require("../../../commons/decorator/anonymous.decorator");
+const types_1 = require("../../../commons/types");
 const web_1 = require("../../../commons/utils/web");
-const base_entity_controller_1 = require("../../../commons/web/base-entity.controller");
-const announcement_delete_dto_1 = require("../domain/dto/announcement-delete.dto");
+const base_controller_1 = require("../../../commons/web/base.controller");
 const announcement_list_dto_1 = require("../domain/dto/announcement-list.dto");
 const announcement_save_dto_1 = require("../domain/dto/announcement-save.dto");
 const announcement_service_1 = require("../service/announcement.service");
 const common_1 = require("@nestjs/common");
 const swagger_1 = require("@nestjs/swagger");
-let AnnouncementAdminController = class AnnouncementAdminController extends base_entity_controller_1.BaseEntityController {
+let AnnouncementAdminController = class AnnouncementAdminController extends base_controller_1.BaseController {
     announcementService;
     constructor(announcementService) {
         super();
         this.announcementService = announcementService;
     }
-    async search(request) {
-        return web_1.Web.page(await this.announcementService.findAll(request));
+    async list(dto) {
+        return web_1.Web.page(await this.announcementService.findByPage(dto));
     }
     async view(id) {
         return web_1.Web.success(await this.announcementService.findById(id));
     }
     async save(dto) {
-        this.announcementService.save(dto).then();
+        this.announcementService.saveAnnouncement(dto).then();
         return web_1.Web.success();
     }
-    async delete(request) {
-        console.log(request);
+    async delete(dto) {
+        this.announcementService.batchSoftDelete(dto).then();
         return web_1.Web.success();
     }
 };
@@ -52,9 +52,10 @@ __decorate([
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [announcement_list_dto_1.AnnouncementListDto]),
     __metadata("design:returntype", Promise)
-], AnnouncementAdminController.prototype, "search", null);
+], AnnouncementAdminController.prototype, "list", null);
 __decorate([
     (0, anonymous_decorator_1.Anonymous)(),
+    (0, swagger_1.ApiOperation)({ summary: '资讯详情' }),
     (0, common_1.Post)('/view'),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
@@ -74,7 +75,7 @@ __decorate([
     (0, common_1.Post)('/delete'),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [announcement_delete_dto_1.AnnouncementDeleteDto]),
+    __metadata("design:paramtypes", [types_1.DeleteQuery]),
     __metadata("design:returntype", Promise)
 ], AnnouncementAdminController.prototype, "delete", null);
 exports.AnnouncementAdminController = AnnouncementAdminController = __decorate([

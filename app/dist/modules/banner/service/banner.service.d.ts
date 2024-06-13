@@ -1,7 +1,9 @@
-import { BannerEntity } from '@/modules/banner/entity/banner.entity';
+import { EntityService } from '@/commons/service/entity.service';
+import { BannerSaveDto } from '@/modules/banner/domain/dto/banner-save.dto';
+import { BannerEntity } from '@/modules/banner/domain/entity/banner.entity';
 import { BannerRepository } from '@/modules/banner/repository/banner.repository';
-export declare class BannerService {
-    private readonly bannerRepository;
+export declare class BannerService extends EntityService<BannerEntity, BannerRepository> {
+    readonly bannerRepository: BannerRepository;
     constructor(bannerRepository: BannerRepository);
-    findAll(): Promise<BannerEntity[]>;
+    saveBanner(dto: BannerSaveDto): Promise<void>;
 }

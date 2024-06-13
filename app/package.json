@@ -23,6 +23,7 @@
         "@nestjs/swagger": "^7.3.1",
         "@nestjs/throttler": "^5.1.2",
         "@nestjs/typeorm": "^10.0.2",
+        "ali-oss": "^6.20.0",
         "bcrypt": "^5.1.1",
         "cache-manager": "^5.6.1",
         "cache-manager-redis-store": "^3.0.1",
@@ -36,6 +37,7 @@
         "joi": "^17.13.1",
         "joi-i18n": "^13.1.4",
         "log4js": "^6.9.1",
+        "minio": "^8.0.0",
         "mongoose": "^8.4.1",
         "mysql2": "^3.10.0",
         "nestjs-i18n": "^10.4.5",
@@ -65,5 +67,5 @@
         "tsconfig-paths": "^4.2.0",
         "typescript": "^5.4.5"
     },
-    "packageManager": "pnpm@9.2.0"
+    "packageManager": "pnpm@9.3.0"
 }

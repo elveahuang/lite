@@ -13,32 +13,32 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserService = void 0;
+const entity_service_1 = require("../../../commons/service/entity.service");
 const authority_entity_1 = require("../domain/entity/authority.entity");
 const role_entity_1 = require("../domain/entity/role.entity");
 const user_entity_1 = require("../domain/entity/user.entity");
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
-let UserService = class UserService {
+let UserService = class UserService extends entity_service_1.EntityService {
     userRepository;
     roleRepository;
     authorityRepository;
     constructor(userRepository, roleRepository, authorityRepository) {
+        super(userRepository);
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
         this.authorityRepository = authorityRepository;
     }
-    async search(request) {
-        return this.userRepository.find();
-    }
+    async register(dto) { }
     async findByUsername(username) {
         return await this.userRepository.findByUsername(username);
     }
-    async findAll() {
-        return this.userRepository.find();
-    }
-    async test() {
-        console.log(`UserService.test...`);
-        console.log(this.userRepository.findByUsername('admin'));
+    async saveUser(dto) {
+        const entity = new user_entity_1.UserEntity();
+        entity.id = dto.id;
+        entity.username = dto.username;
+        entity.password = dto.password;
+        await this.getRepository().save(entity);
     }
 };
 exports.UserService = UserService;

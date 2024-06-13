@@ -1,3 +1,3 @@
-import { Pagination } from '@/commons/types';
-export declare class AnnouncementListDto extends Pagination {
+import { PaginationQuery } from '@/commons/types';
+export declare class AnnouncementListDto extends PaginationQuery {
 }

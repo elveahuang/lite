@@ -17,7 +17,9 @@ export declare class Pagination {
     readonly size?: number;
     readonly q?: string;
 }
+export declare class PaginationQuery extends Pagination {
+}
 export declare const defaultPagination: Pagination;
-export declare class DeleteRequest {
+export declare class DeleteQuery {
     ids: number[] | string[] | bigint[] | EntityKey[];
 }

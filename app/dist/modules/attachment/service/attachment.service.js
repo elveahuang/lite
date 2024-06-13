@@ -13,9 +13,9 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AttachmentService = void 0;
-const attachment_file_entity_1 = require("../entity/attachment-file.entity");
-const attachment_relation_entity_1 = require("../entity/attachment-relation.entity");
-const attachment_type_entity_1 = require("../entity/attachment-type.entity");
+const attachment_file_entity_1 = require("../domain/entity/attachment-file.entity");
+const attachment_relation_entity_1 = require("../domain/entity/attachment-relation.entity");
+const attachment_type_entity_1 = require("../domain/entity/attachment-type.entity");
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
 let AttachmentService = class AttachmentService {

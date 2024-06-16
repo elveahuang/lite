@@ -31,7 +31,7 @@ let AnnouncementAdminController = class AnnouncementAdminController extends base
     async list(dto) {
         return web_1.Web.page(await this.announcementService.findByPage(dto));
     }
-    async view(id) {
+    async details(id) {
         return web_1.Web.success(await this.announcementService.findById(id));
     }
     async save(dto) {
@@ -56,12 +56,12 @@ __decorate([
 __decorate([
     (0, anonymous_decorator_1.Anonymous)(),
     (0, swagger_1.ApiOperation)({ summary: '资讯详情' }),
-    (0, common_1.Post)('/view'),
-    __param(0, (0, common_1.Param)('id')),
+    (0, common_1.Post)('/details'),
+    __param(0, (0, common_1.Body)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [BigInt]),
     __metadata("design:returntype", Promise)
-], AnnouncementAdminController.prototype, "view", null);
+], AnnouncementAdminController.prototype, "details", null);
 __decorate([
     (0, anonymous_decorator_1.Anonymous)(),
     (0, common_1.Post)('/save'),

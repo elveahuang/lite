@@ -8,7 +8,7 @@ export declare class AnnouncementAdminController extends BaseController {
     private readonly announcementService;
     constructor(announcementService: AnnouncementService);
     list(dto: AnnouncementListDto): Promise<R<Page<AnnouncementEntity>>>;
-    view(id: EntityKey): Promise<R<AnnouncementEntity>>;
+    details(id: EntityKey): Promise<R<AnnouncementEntity>>;
     save(dto: AnnouncementSaveDto): Promise<R>;
     delete(dto: DeleteQuery): Promise<R>;
 }

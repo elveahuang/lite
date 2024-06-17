@@ -56,7 +56,7 @@ __decorate([
 __decorate([
     (0, anonymous_decorator_1.Anonymous)(),
     (0, swagger_1.ApiOperation)({ summary: '资讯详情' }),
-    (0, common_1.Post)('/view'),
+    (0, common_1.Post)('/details'),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [BigInt]),

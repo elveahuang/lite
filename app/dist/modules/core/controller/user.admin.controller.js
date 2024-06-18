@@ -15,8 +15,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserAdminController = void 0;
 const anonymous_decorator_1 = require("../../../commons/decorator/anonymous.decorator");
 const types_1 = require("../../../commons/types");
+const utils_1 = require("../../../commons/utils");
 const web_1 = require("../../../commons/utils/web");
 const base_controller_1 = require("../../../commons/web/base.controller");
+const user_check_dto_1 = require("../domain/dto/user-check.dto");
 const user_list_dto_1 = require("../domain/dto/user-list.dto");
 const user_save_dto_1 = require("../domain/dto/user-save.dto");
 const user_service_1 = require("../service/user.service");
@@ -28,11 +30,17 @@ let UserAdminController = class UserAdminController extends base_controller_1.Ba
         super();
         this.userService = userService;
     }
-    async list(dto) {
-        return web_1.Web.page(await this.userService.findByPage(dto));
+    async check(dto) {
+        return web_1.Web.success(await this.userService.checkUsername(dto));
     }
-    async view(id) {
-        return web_1.Web.success(await this.userService.findById(id));
+    async list(pagination) {
+        const [items, total] = await this.userService.search(pagination);
+        const page = (0, utils_1.toPage)(items?.map((item) => this.userService.toDetailsDto(item)), total, pagination);
+        return web_1.Web.page(page);
+    }
+    async details(id) {
+        const entity = await this.userService.findById(id);
+        return web_1.Web.success(this.userService.toDetailsDto(entity));
     }
     async save(dto) {
         this.userService.saveUser(dto).then();
@@ -46,7 +54,15 @@ let UserAdminController = class UserAdminController extends base_controller_1.Ba
 exports.UserAdminController = UserAdminController;
 __decorate([
     (0, anonymous_decorator_1.Anonymous)(),
-    (0, swagger_1.ApiOperation)({ summary: '列表' }),
+    (0, common_1.Post)('/check'),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [user_check_dto_1.UserCheckDto]),
+    __metadata("design:returntype", Promise)
+], UserAdminController.prototype, "check", null);
+__decorate([
+    (0, anonymous_decorator_1.Anonymous)(),
+    (0, swagger_1.ApiOperation)({ summary: '用户列表' }),
     (0, common_1.Post)('/list'),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
@@ -55,13 +71,13 @@ __decorate([
 ], UserAdminController.prototype, "list", null);
 __decorate([
     (0, anonymous_decorator_1.Anonymous)(),
-    (0, swagger_1.ApiOperation)({ summary: '资讯详情' }),
+    (0, swagger_1.ApiOperation)({ summary: '用户详情' }),
     (0, common_1.Post)('/details'),
-    __param(0, (0, common_1.Param)('id')),
+    __param(0, (0, common_1.Query)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [BigInt]),
     __metadata("design:returntype", Promise)
-], UserAdminController.prototype, "view", null);
+], UserAdminController.prototype, "details", null);
 __decorate([
     (0, anonymous_decorator_1.Anonymous)(),
     (0, common_1.Post)('/save'),

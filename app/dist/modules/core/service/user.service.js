@@ -14,11 +14,14 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserService = void 0;
 const entity_service_1 = require("../../../commons/service/entity.service");
+const types_1 = require("../../../commons/types");
+const utils_1 = require("../../../commons/utils");
 const authority_entity_1 = require("../domain/entity/authority.entity");
 const role_entity_1 = require("../domain/entity/role.entity");
 const user_entity_1 = require("../domain/entity/user.entity");
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
+const typeorm_2 = require("typeorm");
 let UserService = class UserService extends entity_service_1.EntityService {
     userRepository;
     roleRepository;
@@ -28,6 +31,28 @@ let UserService = class UserService extends entity_service_1.EntityService {
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
         this.authorityRepository = authorityRepository;
+    }
+    async checkUsername(dto) {
+        const count = await this.getRepository().count({
+            where: {
+                username: dto.username,
+            },
+        });
+        return count > 0;
+    }
+    async search(pagination = types_1.defaultPagination) {
+        const q = (0, utils_1.generateLike)(pagination.q);
+        const options = {
+            where: [
+                {
+                    username: (0, typeorm_2.Like)(q),
+                },
+                {
+                    displayName: (0, typeorm_2.Like)(q),
+                },
+            ],
+        };
+        return super.searchByPage(pagination, options);
     }
     async register(dto) { }
     async findByUsername(username) {
@@ -39,6 +64,14 @@ let UserService = class UserService extends entity_service_1.EntityService {
         entity.username = dto.username;
         entity.password = dto.password;
         await this.getRepository().save(entity);
+    }
+    toDetailsDto(entity) {
+        return {
+            id: entity.id,
+            username: entity.username,
+            displayName: entity.displayName,
+            name: entity.name,
+        };
     }
 };
 exports.UserService = UserService;

@@ -4,7 +4,8 @@ exports.UserProfileDto = void 0;
 class UserProfileDto {
     id;
     username;
-    password;
+    displayName;
+    name;
 }
 exports.UserProfileDto = UserProfileDto;
 //# sourceMappingURL=user-profile.dto.js.map

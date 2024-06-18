@@ -6,19 +6,12 @@ class Web {
     static STATUS_SUCCESS = 200;
     static STATUS_ERROR = 10000;
     static success(data = {}) {
-        if ((0, radash_1.isEmpty)(data)) {
-            return {
-                code: Web.STATUS_SUCCESS,
-                message: 'success',
-            };
-        }
-        else {
-            return {
-                code: Web.STATUS_SUCCESS,
-                data: data,
-                message: 'success',
-            };
-        }
+        console.log(data);
+        return {
+            code: Web.STATUS_SUCCESS,
+            data: data,
+            message: 'success',
+        };
     }
     static error(code = 100000, message = '', data = {}) {
         if ((0, radash_1.isEmpty)(data)) {

@@ -1,7 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const http_exception_filter_1 = require("./commons/filter/http-exception.filter");
+const timeout_interceptor_1 = require("./commons/interceptor/timeout.interceptor");
+const transform_interceptor_1 = require("./commons/interceptor/transform.interceptor");
 const app_module_1 = require("./modules/main/app.module");
+const common_1 = require("@nestjs/common");
 const config_1 = require("@nestjs/config");
 const core_1 = require("@nestjs/core");
 const platform_fastify_1 = require("@nestjs/platform-fastify");
@@ -14,6 +17,9 @@ async function bootstrap() {
         credentials: true,
         maxAge: 1728000,
     });
+    app.useGlobalPipes(new common_1.ValidationPipe());
+    app.useGlobalInterceptors(new timeout_interceptor_1.TimeoutInterceptor());
+    app.useGlobalInterceptors(new transform_interceptor_1.TransformInterceptor());
     app.useGlobalFilters(new http_exception_filter_1.HttpExceptionFilter());
     app.useStaticAssets({
         root: (0, path_1.join)(__dirname, '..', 'public'),
@@ -23,10 +29,12 @@ async function bootstrap() {
         engine: { handlebars: require('handlebars') },
         templates: (0, path_1.join)(__dirname, '..', 'views'),
     });
-    console.log(`App bootstrap ${__dirname}...`);
     const config = app.get(config_1.ConfigService);
-    console.log(`App has been started ${config.get('PORT')}.`);
-    await app.listen(config.get('PORT'), config.get('HOST'));
+    const host = config.get('HOST') || '0.0.0.0';
+    const port = config.get('PORT') || 8080;
+    console.log(`App bootstrap ${__dirname}.`);
+    await app.listen(port, host);
+    console.log(`App has been started. [host - ${host}] [port - ${port}].`);
 }
 bootstrap().then(() => {
     console.log(`App has been started.`);

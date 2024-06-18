@@ -4,6 +4,8 @@ exports.UserSaveDto = void 0;
 class UserSaveDto {
     id;
     username;
+    displayName;
+    name;
     password;
 }
 exports.UserSaveDto = UserSaveDto;

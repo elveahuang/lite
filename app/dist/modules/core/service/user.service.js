@@ -21,6 +21,7 @@ const role_entity_1 = require("../domain/entity/role.entity");
 const user_entity_1 = require("../domain/entity/user.entity");
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
+const radash_1 = require("radash");
 const typeorm_2 = require("typeorm");
 let UserService = class UserService extends entity_service_1.EntityService {
     userRepository;
@@ -38,21 +39,26 @@ let UserService = class UserService extends entity_service_1.EntityService {
                 username: dto.username,
             },
         });
-        return count > 0;
+        return count <= 0;
     }
     async search(pagination = types_1.defaultPagination) {
-        const q = (0, utils_1.generateLike)(pagination.q);
-        const options = {
-            where: [
-                {
-                    username: (0, typeorm_2.Like)(q),
-                },
-                {
-                    displayName: (0, typeorm_2.Like)(q),
-                },
-            ],
-        };
-        return super.searchByPage(pagination, options);
+        const { page, size } = pagination;
+        const qb = this.getRepository()
+            .createQueryBuilder('u')
+            .take(size)
+            .skip((page - 1) * size)
+            .where({
+            active: true,
+        });
+        if (!(0, radash_1.isEmpty)(pagination.q)) {
+            const q = (0, utils_1.generateLike)(pagination.q);
+            qb.andWhere(new typeorm_2.Brackets((qb) => {
+                qb.where({ username: (0, typeorm_2.Like)(q) })
+                    .orWhere({ displayName: (0, typeorm_2.Like)(q) })
+                    .orWhere({ name: (0, typeorm_2.Like)(q) });
+            }));
+        }
+        return qb.getManyAndCount();
     }
     async register(dto) { }
     async findByUsername(username) {

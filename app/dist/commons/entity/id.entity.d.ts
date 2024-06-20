@@ -1,3 +1,3 @@
 export declare class IdEntity {
-    id: bigint;
+    id: string;
 }

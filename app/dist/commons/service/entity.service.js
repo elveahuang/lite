@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.EntityService = void 0;
+const service_exception_1 = require("../exception/service.exception");
 const base_service_1 = require("./base.service");
 const types_1 = require("../types");
 const utils_1 = require("../utils");
@@ -30,11 +31,12 @@ class EntityService extends base_service_1.BaseService {
         return (0, utils_1.toPage)(result[0], result[1], request);
     }
     async findById(id) {
-        const entity = await this.getRepository().findOneBy({
-            id: id,
-        });
+        const options = {
+            id: id || '0',
+        };
+        const entity = await this.getRepository().findOneBy(options);
         if (!entity) {
-            console.log('23');
+            throw new service_exception_1.ServiceException();
         }
         return entity;
     }

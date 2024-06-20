@@ -13,8 +13,10 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserAppController = void 0;
+const anonymous_decorator_1 = require("../../../commons/decorator/anonymous.decorator");
 const web_1 = require("../../../commons/utils/web");
 const announcement_list_dto_1 = require("../../announcement/domain/dto/announcement-list.dto");
+const user_check_dto_1 = require("../domain/dto/user-check.dto");
 const user_register_dto_1 = require("../domain/dto/user-register.dto");
 const user_service_1 = require("../service/user.service");
 const common_1 = require("@nestjs/common");
@@ -22,6 +24,9 @@ let UserAppController = class UserAppController {
     userService;
     constructor(userService) {
         this.userService = userService;
+    }
+    async check(dto) {
+        return web_1.Web.success(await this.userService.checkUsername(dto));
     }
     async list(dto) {
         return web_1.Web.page(await this.userService.findByPage(dto));
@@ -34,6 +39,14 @@ let UserAppController = class UserAppController {
     }
 };
 exports.UserAppController = UserAppController;
+__decorate([
+    (0, anonymous_decorator_1.Anonymous)(),
+    (0, common_1.Post)('/check/username'),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [user_check_dto_1.UserCheckDto]),
+    __metadata("design:returntype", Promise)
+], UserAppController.prototype, "check", null);
 __decorate([
     (0, common_1.Get)('/list'),
     __param(0, (0, common_1.Body)()),
@@ -55,7 +68,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], UserAppController.prototype, "profile", null);
 exports.UserAppController = UserAppController = __decorate([
-    (0, common_1.Controller)('/api/app/user'),
+    (0, common_1.Controller)('/api/user'),
     __metadata("design:paramtypes", [user_service_1.UserService])
 ], UserAppController);
 //# sourceMappingURL=user.app.controller.js.map

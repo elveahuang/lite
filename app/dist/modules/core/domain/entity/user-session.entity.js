@@ -42,7 +42,7 @@ let UserSessionEntity = class UserSessionEntity extends id_entity_1.IdEntity {
 exports.UserSessionEntity = UserSessionEntity;
 __decorate([
     (0, typeorm_1.Column)({ type: 'bigint', name: 'user_id' }),
-    __metadata("design:type", BigInt)
+    __metadata("design:type", String)
 ], UserSessionEntity.prototype, "userId", void 0);
 __decorate([
     (0, typeorm_1.Column)({ name: 'session_id' }),

@@ -73,9 +73,9 @@ __decorate([
     (0, anonymous_decorator_1.Anonymous)(),
     (0, swagger_1.ApiOperation)({ summary: '用户详情' }),
     (0, common_1.Post)('/details'),
-    __param(0, (0, common_1.Query)('id')),
+    __param(0, (0, common_1.Body)('id')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [BigInt]),
+    __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
 ], UserAdminController.prototype, "details", null);
 __decorate([

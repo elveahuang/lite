@@ -2,7 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const http_exception_filter_1 = require("./commons/filter/http-exception.filter");
 const timeout_interceptor_1 = require("./commons/interceptor/timeout.interceptor");
-const transform_interceptor_1 = require("./commons/interceptor/transform.interceptor");
 const app_module_1 = require("./modules/main/app.module");
 const common_1 = require("@nestjs/common");
 const config_1 = require("@nestjs/config");
@@ -19,7 +18,6 @@ async function bootstrap() {
     });
     app.useGlobalPipes(new common_1.ValidationPipe());
     app.useGlobalInterceptors(new timeout_interceptor_1.TimeoutInterceptor());
-    app.useGlobalInterceptors(new transform_interceptor_1.TransformInterceptor());
     app.useGlobalFilters(new http_exception_filter_1.HttpExceptionFilter());
     app.useStaticAssets({
         root: (0, path_1.join)(__dirname, '..', 'public'),

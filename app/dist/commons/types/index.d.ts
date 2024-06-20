@@ -11,7 +11,7 @@ export declare class Page<T> {
         pageSize?: number;
     };
 }
-export type EntityKey = bigint;
+export type EntityKey = string;
 export declare class Pagination {
     readonly page?: number;
     readonly size?: number;

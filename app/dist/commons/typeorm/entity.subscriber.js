@@ -24,7 +24,7 @@ let EntitySubscriber = class EntitySubscriber {
     }
     beforeInsert(event) {
         if (event.entity instanceof id_entity_1.IdEntity) {
-            event.entity.id = this.sequenceService.nextId();
+            event.entity.id = this.sequenceService.nextId().toString();
             console.log(`EntitySubscriber.beforeInsert. generate id - ${event.entity.id}.`);
         }
     }

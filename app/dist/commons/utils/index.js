@@ -37,7 +37,7 @@ const toPage = (data, total, request) => {
 };
 exports.toPage = toPage;
 const generateLike = (value) => {
-    return `%${value}%`;
+    return (0, radash_1.isEmpty)(value) ? '%%' : `%${value}%`;
 };
 exports.generateLike = generateLike;
 const validate = (value, schema, options = {}) => {

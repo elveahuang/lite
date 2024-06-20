@@ -1,6 +1,6 @@
 import { IdEntity } from '@/commons/entity/id.entity';
 export declare class UserSessionEntity extends IdEntity {
-    userId: bigint;
+    userId: string;
     sessionId: string;
     username: string;
     ip: string;

@@ -59,7 +59,7 @@ __decorate([
     (0, common_1.Post)('/details'),
     __param(0, (0, common_1.Body)('id')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [BigInt]),
+    __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
 ], AnnouncementAdminController.prototype, "details", null);
 __decorate([

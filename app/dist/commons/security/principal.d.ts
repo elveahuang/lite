@@ -1,5 +1,5 @@
 export interface Principal {
-    readonly uid: number | bigint;
+    readonly uid: string;
     readonly sid: string;
     readonly username: string;
     readonly nickname: string;

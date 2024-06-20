@@ -17,6 +17,6 @@ class IdEntity {
 exports.IdEntity = IdEntity;
 __decorate([
     (0, typeorm_1.PrimaryGeneratedColumn)({ type: 'bigint', name: 'id', comment: 'ID', unsigned: true }),
-    __metadata("design:type", BigInt)
+    __metadata("design:type", String)
 ], IdEntity.prototype, "id", void 0);
 //# sourceMappingURL=id.entity.js.map

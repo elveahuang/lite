@@ -1,1 +1,0 @@
-import{r,Q as t,T as s,G as e}from"./index-CVq-zUXO.js";import"./XPlayer-DcDZ7mQu.js";import{V as a}from"./VPlayer-Bp_KOdI6.js";const n=()=>(r.useEffect(()=>{t("Index.useEffect..."),s.initialize().then()},[]),e.jsx("div",{children:e.jsx(a,{})}));export{n as default};

@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.validate = exports.generateLike = exports.toPage = exports.createCustomRepository = exports.log = exports.uuid = void 0;
+exports.validate = exports.generateLike = exports.toPage = exports.createCustomRepository = exports.uuid = void 0;
+exports.log = log;
 const constants_1 = require("../constants");
 const validation_exception_1 = require("../exception/validation-exception");
 const typeorm_1 = require("@nestjs/typeorm");
@@ -14,7 +15,6 @@ exports.uuid = uuid;
 function log(log) {
     console.log(log);
 }
-exports.log = log;
 const createCustomRepository = (entity, repository) => {
     return {
         provide: (0, typeorm_1.getRepositoryToken)(entity),

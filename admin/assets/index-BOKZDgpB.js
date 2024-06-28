@@ -1,1 +1,0 @@
-import{a4 as r,j as s,a5 as o,a6 as t}from"./index-BFyfMqP2.js";const i=()=>{const{username:a}=r();return s.jsxs("div",{children:[s.jsxs("div",{children:["Hello ",o(a)?"World":a]}),s.jsx(t,{to:"/about",children:"about"})]})};export{i as default};

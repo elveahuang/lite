@@ -6,6 +6,7 @@ class UserDetailsDto {
     username;
     displayName;
     name;
+    status;
 }
 exports.UserDetailsDto = UserDetailsDto;
 //# sourceMappingURL=user-details.dto.js.map

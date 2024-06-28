@@ -4,4 +4,5 @@ export declare class UserDetailsDto {
     username: string;
     displayName: string;
     name: string;
+    status: number;
 }

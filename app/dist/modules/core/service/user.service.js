@@ -77,6 +77,7 @@ let UserService = class UserService extends entity_service_1.EntityService {
             username: entity.username,
             displayName: entity.displayName,
             name: entity.name,
+            status: entity.status,
         };
     }
 };

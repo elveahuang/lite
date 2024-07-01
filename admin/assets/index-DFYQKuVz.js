@@ -1,1 +1,0 @@
-import{a6 as r,j as s,a7 as o,a8 as t}from"./index-CImqLPgG.js";const i=()=>{const{username:a}=r();return s.jsxs("div",{children:[s.jsxs("div",{children:["Hello ",o(a)?"World":a]}),s.jsx(t,{to:"/about",children:"about"})]})};export{i as default};
